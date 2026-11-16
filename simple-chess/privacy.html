@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Simple Chess</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Privacy Policy", date: "Effective November 16, 2026", s: [
+ ["Summary", "Simple Chess is made for children. It has no ads, no accounts, no analytics and no tracking. We do not collect names, email addresses, locations, photos, contacts or any other personal information."],
+ ["What stays on the device", "Lesson stars, trophies, saved games and settings (sound, vibration, language) are stored only on your device. They are never sent to us. Deleting the app deletes this data, and you can also clear it in Settings with “Reset progress”."],
+ ["Purchases", "The optional Full Version is a one-time In-App Purchase handled by Apple. We never see your payment details. To check whether the Full Version was bought, the app uses RevenueCat, a purchase service. RevenueCat receives a random, anonymous app ID and the purchase record from Apple. This is not linked to your identity and is used only to unlock the Full Version and to restore it. RevenueCat’s privacy policy: https://www.revenuecat.com/privacy"],
+ ["Children’s privacy", "The app is designed for children and follows the Children’s Online Privacy Protection Act (COPPA) and the GDPR rules for children. We do not knowingly collect personal information from children. Purchases and links that leave the app are behind a parental gate that asks an adult to solve a math question."],
+ ["Third parties", "There is no third-party advertising, analytics or social media in the app. Apart from the purchase check described above, the app does not connect to the internet."],
+ ["Your rights", "Because we do not hold personal information about you or your child, there is nothing for us to access, correct or delete. If you have a question, contact us and we will reply."],
+ ["Changes", "If this policy changes, we will update this page and the date above."],
+ ["Contact", "Questions about privacy: {EMAIL}"]
+]},
+tr: {title: "Gizlilik Politikası", date: "Yürürlük tarihi: 16 Kasım 2026", s: [
+ ["Özet", "Basit Satranç çocuklar için yapılmıştır. Reklam, hesap, analiz aracı ve takip yoktur. Ad, e-posta, konum, fotoğraf, rehber veya başka hiçbir kişisel bilgi toplamayız."],
+ ["Cihazda kalanlar", "Ders yıldızları, kupalar, kayıtlı oyunlar ve ayarlar (ses, titreşim, dil) yalnızca cihazınızda saklanır ve bize asla gönderilmez. Uygulamayı silmek bu verileri siler; Ayarlar’daki “İlerlemeyi sıfırla” ile de temizleyebilirsiniz."],
+ ["Satın alımlar", "İsteğe bağlı Tam Sürüm, Apple tarafından işlenen tek seferlik bir uygulama içi satın alımdır. Ödeme bilgilerinizi hiçbir zaman görmeyiz. Tam Sürüm’ün satın alınıp alınmadığını kontrol etmek için uygulama RevenueCat adlı satın alma hizmetini kullanır. RevenueCat rastgele ve anonim bir uygulama kimliği ile Apple’dan gelen satın alma kaydını alır. Bu bilgi kimliğinizle ilişkilendirilmez ve yalnızca Tam Sürüm’ü açmak ve geri yüklemek için kullanılır. RevenueCat gizlilik politikası: https://www.revenuecat.com/privacy"],
+ ["Çocukların gizliliği", "Uygulama çocuklar için tasarlanmıştır ve COPPA (ABD Çocukların Çevrimiçi Gizliliğini Koruma Yasası) ile çocuklara yönelik GDPR kurallarına uyar. Çocuklardan bilerek kişisel bilgi toplamayız. Satın alımlar ve uygulama dışına çıkan bağlantılar, bir yetişkinin matematik sorusu çözmesini isteyen ebeveyn kapısının arkasındadır."],
+ ["Üçüncü taraflar", "Uygulamada üçüncü taraf reklam, analiz veya sosyal medya yoktur. Yukarıdaki satın alma kontrolü dışında uygulama internete bağlanmaz."],
+ ["Haklarınız", "Sizin veya çocuğunuz hakkında kişisel bilgi tutmadığımız için erişilecek, düzeltilecek veya silinecek bir veri yoktur. Sorularınız için bize yazabilirsiniz."],
+ ["Değişiklikler", "Bu politika değişirse bu sayfayı ve yukarıdaki tarihi güncelleriz."],
+ ["İletişim", "Gizlilikle ilgili sorular: {EMAIL}"]
+]},
+de: {title: "Datenschutzerklärung", date: "Gültig ab 16. November 2026", s: [
+ ["Kurzfassung", "Einfach Schach ist für Kinder gemacht. Es gibt keine Werbung, keine Konten, keine Analyse und kein Tracking. Wir erheben keine Namen, E-Mail-Adressen, Standorte, Fotos, Kontakte oder andere personenbezogene Daten."],
+ ["Was auf dem Gerät bleibt", "Sterne, Pokale, gespeicherte Spiele und Einstellungen (Ton, Vibration, Sprache) werden nur auf Ihrem Gerät gespeichert und nie an uns gesendet. Beim Löschen der App werden sie entfernt. Sie können sie auch in den Einstellungen mit „Fortschritt zurücksetzen“ löschen."],
+ ["Käufe", "Die optionale Vollversion ist ein einmaliger In-App-Kauf, den Apple abwickelt. Ihre Zahlungsdaten sehen wir nie. Um zu prüfen, ob die Vollversion gekauft wurde, nutzt die App den Kaufdienst RevenueCat. RevenueCat erhält eine zufällige, anonyme App-ID und den Kaufbeleg von Apple. Diese Daten sind nicht mit Ihrer Identität verknüpft und dienen nur dazu, die Vollversion freizuschalten und wiederherzustellen. Datenschutz bei RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Datenschutz für Kinder", "Die App ist für Kinder gestaltet und beachtet COPPA sowie die DSGVO-Regeln für Kinder. Wir erheben wissentlich keine personenbezogenen Daten von Kindern. Käufe und Links, die die App verlassen, liegen hinter einer Elternsperre mit einer Rechenaufgabe."],
+ ["Dritte", "Die App enthält keine Werbung, Analyse oder sozialen Netzwerke von Dritten. Abgesehen von der oben beschriebenen Kaufprüfung verbindet sich die App nicht mit dem Internet."],
+ ["Ihre Rechte", "Da wir keine personenbezogenen Daten über Sie oder Ihr Kind speichern, gibt es nichts, was wir auskunften, berichtigen oder löschen könnten. Bei Fragen schreiben Sie uns gern."],
+ ["Änderungen", "Wenn sich diese Erklärung ändert, aktualisieren wir diese Seite und das Datum oben."],
+ ["Kontakt", "Fragen zum Datenschutz: {EMAIL}"]
+]},
+fr: {title: "Politique de confidentialité", date: "En vigueur le 16 novembre 2026", s: [
+ ["En bref", "Échecs Faciles est conçu pour les enfants. Pas de publicité, pas de compte, pas d’analyse, pas de suivi. Nous ne collectons ni nom, ni e-mail, ni position, ni photo, ni contact, ni aucune autre donnée personnelle."],
+ ["Ce qui reste sur l’appareil", "Les étoiles, trophées, parties enregistrées et réglages (son, vibrations, langue) sont stockés uniquement sur votre appareil et ne nous sont jamais envoyés. Supprimer l’app les efface ; vous pouvez aussi utiliser « Effacer la progression » dans les Réglages."],
+ ["Achats", "La version complète facultative est un achat intégré unique géré par Apple. Nous ne voyons jamais vos données de paiement. Pour vérifier si la version complète a été achetée, l’app utilise RevenueCat, un service d’achats. RevenueCat reçoit un identifiant d’app aléatoire et anonyme ainsi que le reçu d’achat d’Apple. Ces données ne sont pas liées à votre identité et servent uniquement à débloquer et restaurer la version complète. Confidentialité de RevenueCat : https://www.revenuecat.com/privacy"],
+ ["Confidentialité des enfants", "L’app est conçue pour les enfants et respecte la loi COPPA et les règles du RGPD pour les enfants. Nous ne collectons pas sciemment de données personnelles d’enfants. Les achats et les liens externes sont protégés par un contrôle parental qui demande à un adulte de résoudre un calcul."],
+ ["Tiers", "L’app ne contient ni publicité, ni outil d’analyse, ni réseau social tiers. En dehors de la vérification d’achat décrite ci-dessus, l’app ne se connecte pas à Internet."],
+ ["Vos droits", "Comme nous ne détenons aucune donnée personnelle sur vous ou votre enfant, il n’y a rien à consulter, corriger ou supprimer. Pour toute question, écrivez-nous."],
+ ["Modifications", "Si cette politique change, nous mettrons à jour cette page et la date ci-dessus."],
+ ["Contact", "Questions sur la confidentialité : {EMAIL}"]
+]},
+es: {title: "Política de privacidad", date: "Vigente desde el 16 de noviembre de 2026", s: [
+ ["Resumen", "Ajedrez Fácil está hecho para niños. No tiene anuncios, cuentas, analíticas ni rastreo. No recopilamos nombres, correos, ubicación, fotos, contactos ni ningún otro dato personal."],
+ ["Lo que se queda en el dispositivo", "Las estrellas, trofeos, partidas guardadas y ajustes (sonido, vibración, idioma) se guardan solo en tu dispositivo y nunca se nos envían. Al borrar la app se eliminan; también puedes usar «Borrar progreso» en Ajustes."],
+ ["Compras", "La versión completa opcional es una compra única dentro de la app gestionada por Apple. Nunca vemos tus datos de pago. Para comprobar si se compró la versión completa, la app usa RevenueCat, un servicio de compras. RevenueCat recibe un identificador de app aleatorio y anónimo y el recibo de compra de Apple. No se vincula a tu identidad y solo sirve para desbloquear y restaurar la versión completa. Privacidad de RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Privacidad infantil", "La app está diseñada para niños y cumple la ley COPPA y las normas del RGPD para menores. No recopilamos a sabiendas datos personales de niños. Las compras y los enlaces externos están detrás de un control parental que pide a un adulto resolver una operación."],
+ ["Terceros", "La app no incluye publicidad, analíticas ni redes sociales de terceros. Aparte de la comprobación de compra descrita arriba, la app no se conecta a Internet."],
+ ["Tus derechos", "Como no guardamos datos personales tuyos ni de tu hijo, no hay nada que consultar, corregir o borrar. Si tienes preguntas, escríbenos."],
+ ["Cambios", "Si esta política cambia, actualizaremos esta página y la fecha de arriba."],
+ ["Contacto", "Preguntas sobre privacidad: {EMAIL}"]
+]},
+it: {title: "Informativa sulla privacy", date: "In vigore dal 16 novembre 2026", s: [
+ ["In breve", "Scacchi Facili è fatto per i bambini. Niente pubblicità, account, analisi o tracciamento. Non raccogliamo nomi, email, posizione, foto, contatti o altri dati personali."],
+ ["Cosa resta sul dispositivo", "Stelle, trofei, partite salvate e impostazioni (suono, vibrazione, lingua) restano solo sul tuo dispositivo e non ci vengono mai inviati. Eliminando l’app vengono cancellati; puoi anche usare «Azzera i progressi» nelle Impostazioni."],
+ ["Acquisti", "La versione completa facoltativa è un acquisto in-app unico gestito da Apple. Non vediamo mai i tuoi dati di pagamento. Per verificare l’acquisto, l’app usa RevenueCat, un servizio per gli acquisti. RevenueCat riceve un ID app casuale e anonimo e la ricevuta d’acquisto di Apple. Questi dati non sono collegati alla tua identità e servono solo a sbloccare e ripristinare la versione completa. Privacy di RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Privacy dei bambini", "L’app è pensata per i bambini e rispetta la legge COPPA e le regole del GDPR per i minori. Non raccogliamo consapevolmente dati personali di bambini. Acquisti e link esterni sono protetti da un controllo per i genitori che chiede a un adulto di risolvere un calcolo."],
+ ["Terze parti", "L’app non contiene pubblicità, strumenti di analisi o social network di terze parti. A parte la verifica dell’acquisto descritta sopra, l’app non si collega a Internet."],
+ ["I tuoi diritti", "Poiché non conserviamo dati personali su di te o su tuo figlio, non c’è nulla da consultare, correggere o cancellare. Per domande, scrivici."],
+ ["Modifiche", "Se questa informativa cambia, aggiorneremo questa pagina e la data qui sopra."],
+ ["Contatti", "Domande sulla privacy: {EMAIL}"]
+]},
+"pt-BR": {title: "Política de Privacidade", date: "Em vigor desde 16 de novembro de 2026", s: [
+ ["Resumo", "Xadrez Fácil é feito para crianças. Não tem anúncios, contas, análises nem rastreamento. Não coletamos nomes, e-mails, localização, fotos, contatos nem qualquer outro dado pessoal."],
+ ["O que fica no aparelho", "Estrelas, troféus, partidas salvas e ajustes (som, vibração, idioma) ficam só no seu aparelho e nunca são enviados para nós. Apagar o app apaga esses dados; você também pode usar “Zerar progresso” nos Ajustes."],
+ ["Compras", "A versão completa opcional é uma compra única dentro do app processada pela Apple. Nunca vemos seus dados de pagamento. Para verificar se a versão completa foi comprada, o app usa o RevenueCat, um serviço de compras. O RevenueCat recebe um identificador de app aleatório e anônimo e o recibo de compra da Apple. Isso não é vinculado à sua identidade e serve apenas para liberar e restaurar a versão completa. Privacidade do RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Privacidade das crianças", "O app foi feito para crianças e segue a lei COPPA, a LGPD e as regras do GDPR para menores. Não coletamos intencionalmente dados pessoais de crianças. Compras e links externos ficam atrás de um controle dos pais que pede a um adulto para resolver uma conta."],
+ ["Terceiros", "O app não tem publicidade, análises nem redes sociais de terceiros. Além da verificação de compra descrita acima, o app não se conecta à internet."],
+ ["Seus direitos", "Como não guardamos dados pessoais seus ou do seu filho, não há nada para acessar, corrigir ou apagar. Em caso de dúvida, fale conosco."],
+ ["Alterações", "Se esta política mudar, atualizaremos esta página e a data acima."],
+ ["Contato", "Dúvidas sobre privacidade: {EMAIL}"]
+]},
+ru: {title: "Политика конфиденциальности", date: "Действует с 16 ноября 2026 г.", s: [
+ ["Кратко", "«Простые шахматы» созданы для детей. В приложении нет рекламы, аккаунтов, аналитики и отслеживания. Мы не собираем имена, e-mail, геопозицию, фото, контакты и другие персональные данные."],
+ ["Что хранится на устройстве", "Звёзды, награды, сохранённые партии и настройки (звук, вибрация, язык) хранятся только на вашем устройстве и никогда нам не передаются. При удалении приложения они удаляются; их также можно стереть кнопкой «Сбросить прогресс» в настройках."],
+ ["Покупки", "Необязательная полная версия — это разовая встроенная покупка, которую обрабатывает Apple. Мы никогда не видим ваши платёжные данные. Чтобы проверить покупку, приложение использует сервис RevenueCat. RevenueCat получает случайный анонимный идентификатор приложения и чек покупки от Apple. Эти данные не связаны с вашей личностью и нужны только для открытия и восстановления полной версии. Политика RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Конфиденциальность детей", "Приложение создано для детей и соответствует закону COPPA и правилам GDPR для детей. Мы сознательно не собираем персональные данные детей. Покупки и внешние ссылки закрыты родительским контролем: взрослому нужно решить пример."],
+ ["Третьи стороны", "В приложении нет сторонней рекламы, аналитики и соцсетей. Кроме описанной выше проверки покупки, приложение не подключается к интернету."],
+ ["Ваши права", "Поскольку мы не храним персональных данных о вас или вашем ребёнке, нам нечего предоставлять, исправлять или удалять. Если у вас есть вопросы, напишите нам."],
+ ["Изменения", "Если политика изменится, мы обновим эту страницу и дату выше."],
+ ["Контакты", "Вопросы о конфиденциальности: {EMAIL}"]
+]},
+ja: {title: "プライバシーポリシー", date: "2026年11月16日施行", s: [
+ ["概要", "かんたんチェスは子ども向けのアプリです。広告、アカウント、分析ツール、トラッキングはありません。名前、メールアドレス、位置情報、写真、連絡先などの個人情報は一切収集しません。"],
+ ["端末に保存されるもの", "レッスンのほし、トロフィー、保存した対戦、設定（サウンド、バイブレーション、言語）は端末の中だけに保存され、私たちに送信されることはありません。アプリを削除すると消去されます。設定の「進み具合をリセット」でも消去できます。"],
+ ["購入について", "任意のフルバージョンはAppleが処理する買い切りのアプリ内課金です。支払い情報を私たちが見ることはありません。購入済みかどうかの確認にRevenueCatという購入管理サービスを使用します。RevenueCatが受け取るのは、ランダムで匿名のアプリIDとAppleからの購入記録のみです。これはお客様の身元とは結び付かず、フルバージョンの解放と復元にのみ使われます。RevenueCatのプライバシーポリシー：https://www.revenuecat.com/privacy"],
+ ["子どものプライバシー", "本アプリは子ども向けに設計されており、COPPA（児童オンラインプライバシー保護法）およびGDPRの子どもに関する規定に従っています。子どもから意図的に個人情報を収集することはありません。購入とアプリ外へのリンクは、大人に計算問題を解いてもらう保護者ゲートの先にあります。"],
+ ["第三者", "アプリには第三者の広告、分析ツール、SNSは含まれていません。上記の購入確認以外で、アプリがインターネットに接続することはありません。"],
+ ["お客様の権利", "お客様やお子さまの個人情報を保持していないため、開示・訂正・削除の対象となるデータはありません。ご質問はお気軽にお問い合わせください。"],
+ ["変更", "本ポリシーを変更する場合は、このページと上記の日付を更新します。"],
+ ["お問い合わせ", "プライバシーに関するお問い合わせ：{EMAIL}"]
+]},
+ko: {title: "개인정보 처리방침", date: "시행일: 2026년 11월 16일", s: [
+ ["요약", "쉬운 체스는 어린이를 위해 만든 앱입니다. 광고, 계정, 분석 도구, 추적이 없습니다. 이름, 이메일, 위치, 사진, 연락처 등 어떤 개인정보도 수집하지 않습니다."],
+ ["기기에 저장되는 정보", "레슨 별, 트로피, 저장된 게임, 설정(소리, 진동, 언어)은 기기에만 저장되며 저희에게 전송되지 않습니다. 앱을 삭제하면 함께 삭제되며, 설정의 ‘진행 기록 초기화’로도 지울 수 있습니다."],
+ ["구입", "선택 사항인 정식 버전은 Apple이 처리하는 1회성 앱 내 구입입니다. 저희는 결제 정보를 볼 수 없습니다. 정식 버전 구입 여부를 확인하기 위해 앱은 구입 관리 서비스인 RevenueCat을 사용합니다. RevenueCat은 무작위 익명 앱 ID와 Apple의 구입 기록만 받습니다. 이 정보는 사용자의 신원과 연결되지 않으며 정식 버전을 열고 복원하는 데에만 사용됩니다. RevenueCat 개인정보 처리방침: https://www.revenuecat.com/privacy"],
+ ["어린이 개인정보", "이 앱은 어린이를 위해 설계되었으며 COPPA(미국 아동 온라인 개인정보 보호법)와 아동에 관한 GDPR 규정을 따릅니다. 어린이의 개인정보를 고의로 수집하지 않습니다. 구입과 앱 밖으로 나가는 링크는 어른이 계산 문제를 풀어야 하는 보호자 확인 뒤에 있습니다."],
+ ["제3자", "앱에는 제3자 광고, 분석 도구, 소셜 미디어가 없습니다. 위에서 설명한 구입 확인 외에는 인터넷에 연결하지 않습니다."],
+ ["이용자의 권리", "이용자나 자녀의 개인정보를 보관하지 않으므로 열람, 정정, 삭제할 데이터가 없습니다. 궁금한 점은 언제든 문의해 주세요."],
+ ["변경", "이 방침이 변경되면 이 페이지와 위의 날짜를 업데이트합니다."],
+ ["문의", "개인정보 관련 문의: {EMAIL}"]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>

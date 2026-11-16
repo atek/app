@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help & Contact · Simple Chess</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Help & Contact", date: "We usually reply within two working days.", s: [
+ ["Contact us", "Email: {EMAIL}. Please tell us your device model and what happened."],
+ ["How do I restore the Full Version?", "Open Settings in the app, tap “Restore Purchases” and answer the grown-up question. Use the same Apple Account that bought the Full Version."],
+ ["Can my other children use the Full Version?", "Yes. Family Sharing is on, so everyone in your Apple family group gets the Full Version for free."],
+ ["What is free?", "The Pawn and Knight lessons, practice mode and the Easy computer level are free. The Full Version is a one-time purchase with no subscription."],
+ ["How do I change the language?", "Open Settings in the app and choose one of the 10 languages."],
+ ["How do I start over?", "Open Settings and tap “Reset progress”. Stars, lessons and saved games are erased."],
+ ["Privacy", "No ads, no accounts, no tracking. Read the full privacy policy: <a href=\"privacy.html\">Privacy Policy</a>."]
+]},
+tr: {title: "Yardım ve İletişim", date: "Genellikle iki iş günü içinde yanıt veririz.", s: [
+ ["Bize ulaşın", "E-posta: {EMAIL}. Lütfen cihaz modelinizi ve ne olduğunu yazın."],
+ ["Tam Sürüm’ü nasıl geri yüklerim?", "Uygulamada Ayarlar’ı açın, “Satın Alımları Geri Yükle”ye dokunun ve büyüklere yönelik soruyu yanıtlayın. Tam Sürüm’ü satın alan Apple Hesabı’nı kullanın."],
+ ["Diğer çocuklarım da Tam Sürüm’ü kullanabilir mi?", "Evet. Aile Paylaşımı açık; Apple aile grubunuzdaki herkes Tam Sürüm’ü ücretsiz kullanır."],
+ ["Neler ücretsiz?", "Piyon ve At dersleri, alıştırma modu ve Kolay seviye ücretsizdir. Tam Sürüm tek seferlik bir satın alımdır, abonelik yoktur."],
+ ["Dili nasıl değiştiririm?", "Uygulamada Ayarlar’ı açın ve 10 dilden birini seçin."],
+ ["Baştan nasıl başlarım?", "Ayarlar’da “İlerlemeyi sıfırla”ya dokunun. Yıldızlar, dersler ve kayıtlı oyunlar silinir."],
+ ["Gizlilik", "Reklam yok, hesap yok, takip yok. Tüm ayrıntılar: <a href=\"privacy.html#tr\">Gizlilik Politikası</a>."]
+]},
+de: {title: "Hilfe & Kontakt", date: "Wir antworten meist innerhalb von zwei Werktagen.", s: [
+ ["Kontakt", "E-Mail: {EMAIL}. Bitte nennen Sie Ihr Gerätemodell und was passiert ist."],
+ ["Wie stelle ich die Vollversion wieder her?", "Öffnen Sie in der App die Einstellungen, tippen Sie auf „Käufe wiederherstellen“ und beantworten Sie die Elternfrage. Verwenden Sie den Apple Account, mit dem gekauft wurde."],
+ ["Können meine anderen Kinder die Vollversion nutzen?", "Ja. Die Familienfreigabe ist aktiv, alle in Ihrer Apple-Familie erhalten die Vollversion kostenlos."],
+ ["Was ist kostenlos?", "Die Lektionen zu Bauer und Springer, der Übungsmodus und die Stufe Leicht. Die Vollversion ist ein einmaliger Kauf ohne Abo."],
+ ["Wie ändere ich die Sprache?", "Öffnen Sie die Einstellungen in der App und wählen Sie eine der 10 Sprachen."],
+ ["Wie fange ich von vorn an?", "Tippen Sie in den Einstellungen auf „Fortschritt zurücksetzen“. Sterne, Lektionen und gespeicherte Spiele werden gelöscht."],
+ ["Datenschutz", "Keine Werbung, keine Konten, kein Tracking. Alle Details: <a href=\"privacy.html#de\">Datenschutzerklärung</a>."]
+]},
+fr: {title: "Aide et contact", date: "Nous répondons en général sous deux jours ouvrés.", s: [
+ ["Nous contacter", "E-mail : {EMAIL}. Indiquez le modèle de votre appareil et ce qui s’est passé."],
+ ["Comment restaurer la version complète ?", "Ouvrez les Réglages de l’app, touchez « Restaurer les achats » et répondez à la question pour les parents. Utilisez le compte Apple qui a fait l’achat."],
+ ["Mes autres enfants peuvent-ils en profiter ?", "Oui. Le partage familial est activé : toute votre famille Apple obtient la version complète gratuitement."],
+ ["Qu’est-ce qui est gratuit ?", "Les leçons du pion et du cavalier, le mode entraînement et le niveau Facile. La version complète est un achat unique, sans abonnement."],
+ ["Comment changer de langue ?", "Ouvrez les Réglages de l’app et choisissez l’une des 10 langues."],
+ ["Comment recommencer ?", "Dans les Réglages, touchez « Effacer la progression ». Étoiles, leçons et parties enregistrées sont effacées."],
+ ["Confidentialité", "Pas de pub, pas de compte, pas de suivi. Tous les détails : <a href=\"privacy.html#fr\">Politique de confidentialité</a>."]
+]},
+es: {title: "Ayuda y contacto", date: "Solemos responder en dos días laborables.", s: [
+ ["Contáctanos", "Correo: {EMAIL}. Indícanos el modelo de tu dispositivo y qué ocurrió."],
+ ["¿Cómo restauro la versión completa?", "Abre Ajustes en la app, toca «Restaurar compras» y responde la pregunta para adultos. Usa la misma cuenta de Apple con la que compraste."],
+ ["¿Pueden usarla mis otros hijos?", "Sí. En familia está activado: todo tu grupo familiar de Apple obtiene la versión completa gratis."],
+ ["¿Qué es gratis?", "Las lecciones del peón y del caballo, el modo práctica y el nivel Fácil. La versión completa es un pago único, sin suscripción."],
+ ["¿Cómo cambio el idioma?", "Abre Ajustes en la app y elige uno de los 10 idiomas."],
+ ["¿Cómo empiezo de nuevo?", "En Ajustes, toca «Borrar progreso». Se borran estrellas, lecciones y partidas guardadas."],
+ ["Privacidad", "Sin anuncios, sin cuentas, sin rastreo. Todos los detalles: <a href=\"privacy.html#es\">Política de privacidad</a>."]
+]},
+it: {title: "Aiuto e contatti", date: "Di solito rispondiamo entro due giorni lavorativi.", s: [
+ ["Contattaci", "Email: {EMAIL}. Indica il modello del dispositivo e cosa è successo."],
+ ["Come ripristino la versione completa?", "Apri le Impostazioni nell’app, tocca «Ripristina acquisti» e rispondi alla domanda per i genitori. Usa lo stesso account Apple dell’acquisto."],
+ ["Possono usarla anche gli altri miei figli?", "Sì. In famiglia è attivo: tutto il tuo gruppo famiglia Apple riceve la versione completa gratis."],
+ ["Cosa è gratis?", "Le lezioni su pedone e cavallo, l’allenamento e il livello Facile. La versione completa è un acquisto unico, senza abbonamento."],
+ ["Come cambio lingua?", "Apri le Impostazioni nell’app e scegli una delle 10 lingue."],
+ ["Come ricomincio da capo?", "Nelle Impostazioni tocca «Azzera i progressi». Stelle, lezioni e partite salvate vengono cancellate."],
+ ["Privacy", "Niente pubblicità, account o tracciamento. Tutti i dettagli: <a href=\"privacy.html#it\">Informativa sulla privacy</a>."]
+]},
+"pt-BR": {title: "Ajuda e contato", date: "Costumamos responder em até dois dias úteis.", s: [
+ ["Fale conosco", "E-mail: {EMAIL}. Conte o modelo do seu aparelho e o que aconteceu."],
+ ["Como restauro a versão completa?", "Abra os Ajustes no app, toque em “Restaurar compras” e responda à pergunta para adultos. Use a mesma Conta Apple que fez a compra."],
+ ["Meus outros filhos podem usar?", "Sim. O Compartilhamento Familiar está ativo: todos do seu grupo familiar Apple recebem a versão completa de graça."],
+ ["O que é grátis?", "As lições do peão e do cavalo, o modo treino e o nível Fácil. A versão completa é uma compra única, sem assinatura."],
+ ["Como mudo o idioma?", "Abra os Ajustes no app e escolha um dos 10 idiomas."],
+ ["Como começo de novo?", "Nos Ajustes, toque em “Zerar progresso”. Estrelas, lições e partidas salvas são apagadas."],
+ ["Privacidade", "Sem anúncios, sem contas, sem rastreamento. Todos os detalhes: <a href=\"privacy.html#pt-BR\">Política de Privacidade</a>."]
+]},
+ru: {title: "Помощь и связь", date: "Обычно отвечаем в течение двух рабочих дней.", s: [
+ ["Связаться с нами", "E-mail: {EMAIL}. Укажите модель устройства и опишите, что произошло."],
+ ["Как восстановить полную версию?", "Откройте настройки в приложении, нажмите «Восстановить покупки» и ответьте на вопрос для взрослых. Используйте тот же Apple Account, с которого была покупка."],
+ ["Могут ли другие мои дети пользоваться полной версией?", "Да. Семейный доступ включён: вся ваша семейная группа Apple получает полную версию бесплатно."],
+ ["Что бесплатно?", "Уроки про пешку и коня, тренировка и уровень «Лёгкий». Полная версия — разовая покупка без подписки."],
+ ["Как сменить язык?", "Откройте настройки в приложении и выберите один из 10 языков."],
+ ["Как начать заново?", "В настройках нажмите «Сбросить прогресс». Звёзды, уроки и сохранённые партии будут удалены."],
+ ["Конфиденциальность", "Без рекламы, аккаунтов и отслеживания. Подробнее: <a href=\"privacy.html#ru\">Политика конфиденциальности</a>."]
+]},
+ja: {title: "ヘルプとお問い合わせ", date: "通常2営業日以内に返信します。", s: [
+ ["お問い合わせ", "メール：{EMAIL}　お使いの端末の機種と、起きたことを教えてください。"],
+ ["フルバージョンを復元するには？", "アプリの「せってい」を開き、「購入を復元」をタップして保護者向けの質問に答えてください。購入時と同じApple Accountを使ってください。"],
+ ["ほかの子どもも使えますか？", "はい。ファミリー共有に対応しているので、Appleのファミリーグループ全員が追加料金なしで使えます。"],
+ ["無料で使えるのは？", "ポーンとナイトのレッスン、練習モード、「かんたん」レベルです。フルバージョンは買い切りで、サブスクリプションではありません。"],
+ ["言語を変えるには？", "アプリの「せってい」を開き、10言語から選んでください。"],
+ ["最初からやり直すには？", "「せってい」で「進み具合をリセット」をタップします。ほし、レッスン、保存した対戦が消去されます。"],
+ ["プライバシー", "広告なし・アカウントなし・トラッキングなし。詳しくは<a href=\"privacy.html#ja\">プライバシーポリシー</a>をご覧ください。"]
+]},
+ko: {title: "도움말 및 문의", date: "보통 영업일 기준 2일 이내에 답변드립니다.", s: [
+ ["문의하기", "이메일: {EMAIL}. 기기 모델과 어떤 일이 있었는지 알려 주세요."],
+ ["정식 버전은 어떻게 복원하나요?", "앱의 설정을 열고 ‘구입 항목 복원’을 누른 뒤 보호자 질문에 답해 주세요. 구입할 때 사용한 Apple 계정을 사용해야 합니다."],
+ ["다른 자녀도 쓸 수 있나요?", "네. 가족 공유가 켜져 있어 Apple 가족 그룹 모두가 정식 버전을 무료로 사용할 수 있어요."],
+ ["무료로 쓸 수 있는 것은?", "폰과 나이트 레슨, 연습 모드, 쉬움 단계예요. 정식 버전은 구독이 아닌 1회 구입입니다."],
+ ["언어는 어떻게 바꾸나요?", "앱의 설정을 열고 10개 언어 중 하나를 고르세요."],
+ ["처음부터 다시 하려면?", "설정에서 ‘진행 기록 초기화’를 누르세요. 별, 레슨, 저장된 게임이 지워집니다."],
+ ["개인정보", "광고, 계정, 추적이 없어요. 자세한 내용: <a href=\"privacy.html#ko\">개인정보 처리방침</a>."]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>
