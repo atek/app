@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilfe & Kontakt · Radfuchs</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Sprache"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+de: {title: "Hilfe & Kontakt", date: "Wir antworten meist innerhalb von zwei Werktagen.", s: [
+ ["Kontakt", "E-Mail: {EMAIL}. Bitte nennen Sie Ihr Gerät und beschreiben Sie, was passiert ist."],
+ ["Ist das die offizielle Fahrradprüfung?", "Nein. Radfuchs ist eine unabhängige Übungs-App. Sie gehört nicht zur Polizei, zur Schule oder zur Verkehrswacht. Die echte Prüfung macht die Schule. Die Inhalte beruhen nach bestem Wissen auf StVO und StVZO und ersetzen nicht den Unterricht."],
+ ["Was ist kostenlos?", "Die Station „Mein Fahrrad“, der Fahrrad-Check und Testbogen 1 sind kostenlos. Die Vollversion ist ein einmaliger Kauf ohne Abo."],
+ ["Wie stelle ich die Vollversion wieder her?", "Tippen Sie oben rechts auf das Eltern-Symbol, lösen Sie die Rechenaufgabe und öffnen Sie die Vollversion. Dort finden Sie „Käufe wiederherstellen“. Nutzen Sie dieselbe Apple-ID wie beim Kauf."],
+ ["Können Geschwister die Vollversion nutzen?", "Ja. Die Familienfreigabe ist aktiv. Alle in Ihrer Apple-Familie bekommen die Vollversion kostenlos."],
+ ["Wie fange ich neu an?", "Im Elternbereich auf „Fortschritt zurücksetzen“ tippen. Alle Ergebnisse werden gelöscht."],
+ ["Datenschutz", "Keine Werbung, keine Konten, kein Tracking. Mehr dazu: <a href=\"privacy.html#de\">Datenschutzerklärung</a>."]
+]},
+en: {title: "Help & Contact", date: "We usually reply within two working days.", s: [
+ ["Contact us", "Email: {EMAIL}. Please tell us your device model and what happened."],
+ ["Is this the official cycling test?", "No. Radfuchs is an independent practice app. It is not made by the police, schools or the Verkehrswacht. The real test is done at school. The content is based on the German traffic rules (StVO and StVZO) to the best of our knowledge and does not replace lessons."],
+ ["What is free?", "The station “Mein Fahrrad”, the bike check and practice sheet 1 are free. The full version is a one-time purchase with no subscription."],
+ ["How do I restore the full version?", "Tap the parents icon at the top right, solve the math question and open the full version. Tap “Käufe wiederherstellen”. Use the same Apple Account that made the purchase."],
+ ["Can siblings use the full version?", "Yes. Family Sharing is on, so everyone in your Apple family group gets it for free."],
+ ["How do I start over?", "In the parents' area, tap “Fortschritt zurücksetzen”. All results are erased."],
+ ["Privacy", "No ads, no accounts, no tracking. Read the full <a href=\"privacy.html#en\">privacy policy</a>."]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>
