@@ -1,4 +1,4 @@
-// Contact address shown on every page. Replace before publishing.
+// Contact address shown on every page.
 const CONTACT_EMAIL = "ahmettek6@gmail.com";
 
 const LANGS = [["de", "Deutsch"], ["en", "English"]];
