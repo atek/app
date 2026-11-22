@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help & Contact · First Solve</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Help & Contact", date: "We usually reply within two working days.", s: [
+ ["Contact us", "Email: {EMAIL}. Please tell us your device model and what happened."],
+ ["What is free?", "The move letters lesson and steps 1 and 2 are free. The Full Version unlocks all 7 steps and the list of moves for Solve my cube. It is a one-time purchase with no subscription."],
+ ["How do I restore the Full Version?", "Open Me, tap Settings and then “Restore purchase”. Use the same Apple Account that bought the Full Version."],
+ ["Can my family use the Full Version?", "Yes. Family Sharing is on, so everyone in your Apple family group gets the Full Version for free."],
+ ["How does Solve my cube work?", "Hold the cube with the yellow middle sticker on top and the green one facing you. The app shows how to turn the cube before each of 6 pictures, reads the colours, and then shows the moves to solve it. If the camera misreads a colour, tap the sticker and paint it again. Your pictures are never saved or sent."],
+ ["My cube has different colours", "The app expects the usual colours: yellow opposite white, green opposite blue, orange opposite red. Cubes with other colours may need colours painted by hand."],
+ ["How do I change the language?", "Open Me, tap Settings and choose English or Türkçe."],
+ ["Privacy", "No ads, no accounts, no tracking. Read the full privacy policy: <a href=\"privacy.html\">Privacy Policy</a>."]
+]},
+tr: {title: "Yardım ve İletişim", date: "Genellikle iki iş günü içinde yanıt veririz.", s: [
+ ["Bize ulaşın", "E-posta: {EMAIL}. Lütfen cihaz modelinizi ve ne olduğunu yazın."],
+ ["Neler ücretsiz?", "Hamle harfleri dersi ile 1. ve 2. adım ücretsizdir. Tam Sürüm 7 adımın hepsini ve Küpümü çöz için hamle listesini açar. Tek seferlik bir satın alımdır, abonelik yoktur."],
+ ["Tam Sürüm’ü nasıl geri yüklerim?", "Ben sekmesinde Ayarlar’a, ardından “Satın almayı geri yükle”ye dokunun. Tam Sürüm’ü satın alan Apple Hesabı’nı kullanın."],
+ ["Ailem de Tam Sürüm’ü kullanabilir mi?", "Evet. Aile Paylaşımı açık; Apple aile grubunuzdaki herkes Tam Sürüm’ü ücretsiz kullanır."],
+ ["Küpümü çöz nasıl çalışır?", "Küpü ortası sarı olan yüz üstte, ortası yeşil olan yüz size bakacak şekilde tutun. Uygulama 6 resmin her birinden önce küpü nasıl çevireceğinizi gösterir, renkleri okur ve çözmek için hamleleri gösterir. Kamera bir rengi yanlış okursa çıkartmaya dokunup yeniden boyayın. Resimleriniz hiç kaydedilmez veya gönderilmez."],
+ ["Küpümün renkleri farklı", "Uygulama olağan renkleri bekler: sarının karşısı beyaz, yeşilin karşısı mavi, turuncunun karşısı kırmızı. Farklı renkli küplerde renkleri elle boyamanız gerekebilir."],
+ ["Dili nasıl değiştiririm?", "Ben sekmesinde Ayarlar’a dokunun ve English veya Türkçe seçin."],
+ ["Gizlilik", "Reklam yok, hesap yok, takip yok. Tüm ayrıntılar: <a href=\"privacy.html#tr\">Gizlilik Politikası</a>."]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>

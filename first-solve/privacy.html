@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · First Solve</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Privacy Policy", date: "Effective November 22, 2026", s: [
+ ["Summary", "First Solve has no ads, no accounts, no analytics and no tracking. We do not collect names, email addresses, locations, contacts or any other personal information, and we do not receive or store any pictures."],
+ ["What stays on the device", "Finished lessons, the solve timer results and settings (language) are stored only on your device. They are never sent to us. Deleting the app deletes this data."],
+ ["Camera (Solve my cube)", "The optional Solve my cube feature uses the camera to read the colours of your puzzle cube. The camera image is looked at only while you take the picture. The app averages nine colours from it in the phone’s memory and then throws the picture away. Nothing is saved, uploaded or shared. You can also skip the camera and paint the colours by hand. You can turn the camera off at any time in the iPhone Settings."],
+ ["Purchases", "The optional Full Version is a one-time In-App Purchase handled by Apple. We never see your payment details. The app asks Apple whether the purchase exists, using Apple’s own StoreKit. No third-party purchase service is involved."],
+ ["Third parties", "There is no third-party advertising, analytics, social media or other code in the app. Apart from the Apple purchase check, the app does not connect to the internet."],
+ ["Your rights", "Because we do not hold personal information about you or your child, there is nothing for us to access, correct or delete. If you have a question, contact us and we will reply."],
+ ["Changes", "If this policy changes, we will update this page and the date above."],
+ ["Contact", "Questions about privacy: {EMAIL}"]
+]},
+tr: {title: "Gizlilik Politikası", date: "Yürürlük tarihi: 22 Kasım 2026", s: [
+ ["Özet", "First Solve’de reklam, hesap, analiz aracı ve takip yoktur. Ad, e-posta, konum, rehber veya başka hiçbir kişisel bilgi toplamayız; hiçbir fotoğraf almayız ve saklamayız."],
+ ["Cihazda kalanlar", "Tamamlanan dersler, süre tutucu sonuçları ve ayarlar (dil) yalnızca cihazınızda saklanır. Bize hiç gönderilmez. Uygulamayı silmek bu verileri siler."],
+ ["Kamera (Küpümü çöz)", "İsteğe bağlı Küpümü çöz özelliği, küpünüzün renklerini okumak için kamerayı kullanır. Kamera görüntüsüne yalnızca resmi çektiğiniz anda bakılır. Uygulama bundan dokuz rengi telefonun belleğinde ortalar ve resmi atar. Hiçbir şey kaydedilmez, yüklenmez veya paylaşılmaz. Kamerayı hiç kullanmadan renkleri elle de boyayabilirsiniz. Kamerayı istediğiniz zaman iPhone Ayarları’ndan kapatabilirsiniz."],
+ ["Satın alma", "İsteğe bağlı Tam Sürüm, Apple tarafından yürütülen tek seferlik bir Uygulama İçi Satın Alma’dır. Ödeme bilgilerinizi hiç görmeyiz. Uygulama, satın alımın olup olmadığını Apple’ın kendi StoreKit’i ile Apple’a sorar. Üçüncü taraf bir satın alma hizmeti kullanılmaz."],
+ ["Üçüncü taraflar", "Uygulamada üçüncü taraf reklam, analiz, sosyal medya veya başka kod yoktur. Apple satın alma kontrolü dışında uygulama internete bağlanmaz."],
+ ["Haklarınız", "Sizin veya çocuğunuz hakkında kişisel bilgi tutmadığımız için erişilecek, düzeltilecek veya silinecek bir şey yoktur. Sorunuz varsa bize yazın, yanıtlarız."],
+ ["Değişiklikler", "Bu politika değişirse bu sayfayı ve yukarıdaki tarihi güncelleriz."],
+ ["İletişim", "Gizlilik soruları: {EMAIL}"]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>
