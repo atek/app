@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support · Seed Pomodoro Timer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Help & Contact", date: "We usually reply within two working days.", s: [
+ ["Contact us", "Email: {EMAIL}. Please tell us your device model, your iOS version and what happened. Screenshots help a lot."],
+ ["How does the timer work?", "Seed uses the Pomodoro technique: a 25 minute focus session followed by a 5 minute short break, with a longer break after a few cycles. Breaks never start automatically; tap Start when you are ready. You can change every duration in the tag settings sheet on the timer tab."],
+ ["How do I restore my purchase?", "Open the paywall and tap Restore Purchases. Use the same Apple Account that made the purchase. If nothing appears, check your connection and try again."],
+ ["How do I cancel my subscription?", "Open iOS Settings, tap your name, then Subscriptions, and cancel Seed Premium there. You keep premium until the end of the paid period."],
+ ["Why did I not get a notification?", "Make sure notifications are allowed for Seed in iOS Settings. Timer notifications are only used when Live Activities are off; if the timer already shows on your Lock Screen, that is your alert."],
+ ["What happens to my data?", "Sessions, tags and settings are stored only on your device. Deleting the app deletes them. We have no server and no account system."],
+ ["Privacy", "No ads, no accounts, no tracking. Read the full <a href=\"privacy.html#en\">privacy policy</a>."]
+]},
+tr: {title: "Yardım ve İletişim", date: "Genellikle iki iş günü içinde yanıt veririz.", s: [
+ ["Bize ulaşın", "E-posta: {EMAIL}. Lütfen cihaz modelinizi, iOS sürümünüzü ve ne olduğunu yazın. Ekran görüntüleri çok yardımcı olur."],
+ ["Zamanlayıcı nasıl çalışır?", "Seed, Pomodoro tekniğini kullanır: 25 dakika odaklanma ve 5 dakika kısa mola, birkaç döngüden sonra daha uzun bir mola. Molalar hiçbir zaman otomatik başlamaz; hazır olduğunuzda Başlat'a dokunun. Tüm süreleri zamanlayıcı sekmesindeki etiket ayarları sayfasından değiştirebilirsiniz."],
+ ["Satın almamı nasıl geri yüklerim?", "Ödeme ekranını açın ve Satın Almaları Geri Yükle'ye dokunun. Satın almayı yaptığınız Apple Hesabını kullanın. Bir şey görünmezse bağlantınızı kontrol edip tekrar deneyin."],
+ ["Aboneliğimi nasıl iptal ederim?", "iOS Ayarlar → adınız → Abonelikler bölümünden Seed Premium'u iptal edin. Ödenen dönemin sonuna kadar premium erişiminiz devam eder."],
+ ["Neden bildirim gelmedi?", "iOS Ayarlar'da Seed için bildirimlere izin verildiğinden emin olun. Zamanlayıcı bildirimleri yalnızca Canlı Etkinlikler kapalıyken kullanılır; zamanlayıcı kilit ekranınızda görünüyorsa uyarınız odur."],
+ ["Verilerime ne olur?", "Oturumlar, etiketler ve ayarlar yalnızca cihazınızda saklanır. Uygulamayı silmek onları siler. Sunucumuz ve hesap sistemimiz yok."],
+ ["Gizlilik", "Reklam yok, hesap yok, takip yok. Tümünü okuyun: <a href=\"privacy.html#tr\">gizlilik politikası</a>."]
+]},
+de: {title: "Hilfe & Kontakt", date: "Wir antworten meist innerhalb von zwei Werktagen.", s: [
+ ["Kontakt", "E-Mail: {EMAIL}. Bitte nennen Sie Ihr Gerätemodell, Ihre iOS-Version und was passiert ist. Screenshots helfen sehr."],
+ ["Wie funktioniert der Timer?", "Seed nutzt die Pomodoro-Technik: 25 Minuten Fokus, dann 5 Minuten kurze Pause, nach einigen Zyklen eine längere Pause. Pausen starten nie automatisch; tippen Sie auf Start, wenn Sie bereit sind. Alle Zeiten lassen sich im Tag-Einstellungsblatt auf dem Timer-Tab ändern."],
+ ["Wie stelle ich meinen Kauf wieder her?", "Öffnen Sie die Bezahlseite und tippen Sie auf Käufe wiederherstellen. Nutzen Sie denselben Apple Account wie beim Kauf. Wenn nichts erscheint, prüfen Sie Ihre Verbindung und versuchen Sie es erneut."],
+ ["Wie kündige ich mein Abo?", "iOS Einstellungen → Ihr Name → Abonnements → Seed Premium kündigen. Premium bleibt bis zum Ende des bezahlten Zeitraums aktiv."],
+ ["Warum kam keine Mitteilung?", "Erlauben Sie Seed Mitteilungen in den iOS Einstellungen. Timer-Mitteilungen werden nur genutzt, wenn Live Activities aus sind; sehen Sie den Timer bereits auf dem Sperrbildschirm, ist das Ihre Erinnerung."],
+ ["Was passiert mit meinen Daten?", "Sitzungen, Tags und Einstellungen liegen nur auf dem Gerät. Löschen der App löscht sie. Wir haben keinen Server und kein Kontosystem."],
+ ["Datenschutz", "Keine Werbung, keine Konten, kein Tracking. Mehr: <a href=\"privacy.html#de\">Datenschutzerklärung</a>."]
+]},
+fr: {title: "Aide et contact", date: "Nous répondons généralement sous deux jours ouvrés.", s: [
+ ["Nous contacter", "E-mail : {EMAIL}. Indiquez le modèle de votre appareil, votre version d'iOS et ce qui s'est passé. Des captures d'écran aident beaucoup."],
+ ["Comment fonctionne le minuteur ?", "Seed utilise la technique Pomodoro : 25 minutes de concentration, puis 5 minutes de pause courte, et une pause plus longue après quelques cycles. Les pauses ne démarrent jamais automatiquement ; touchez Démarrer quand vous êtes prêt. Toutes les durées se règlent dans la feuille de réglages des étiquettes, sur l'onglet minuteur."],
+ ["Comment restaurer mon achat ?", "Ouvrez la page d'abonnement et touchez Restaurer les achats. Utilisez le même compte Apple que lors de l'achat. Si rien n'apparaît, vérifiez votre connexion et réessayez."],
+ ["Comment annuler mon abonnement ?", "Réglages iOS → votre nom → Abonnements → annulez Seed Premium. Vous gardez l'accès premium jusqu'à la fin de la période payée."],
+ ["Pourquoi je n'ai pas reçu de notification ?", "Autorisez les notifications de Seed dans les réglages iOS. Les notifications du minuteur ne servent que si les Activités en direct sont désactivées ; si le minuteur apparaît déjà sur votre écran verrouillé, c'est votre rappel."],
+ ["Que deviennent mes données ?", "Sessions, étiquettes et réglages restent uniquement sur votre appareil. Supprimer l'app les supprime. Nous n'avons ni serveur ni système de comptes."],
+ ["Confidentialité", "Pas de publicité, pas de compte, pas de suivi. Lire la <a href=\"privacy.html#fr\">politique de confidentialité</a>."]
+]},
+es: {title: "Ayuda y contacto", date: "Solemos responder en un plazo de dos días laborables.", s: [
+ ["Contáctanos", "Correo: {EMAIL}. Cuéntanos el modelo de tu dispositivo, tu versión de iOS y qué ocurrió. Las capturas de pantalla ayudan mucho."],
+ ["¿Cómo funciona el temporizador?", "Seed usa la técnica Pomodoro: 25 minutos de concentración, luego 5 minutos de descanso corto y un descanso más largo tras varios ciclos. Los descansos nunca empiezan solos; pulsa Iniciar cuando estés listo. Puedes cambiar todas las duraciones en la hoja de ajustes de etiquetas de la pestaña del temporizador."],
+ ["¿Cómo restauro mi compra?", "Abre la pantalla de suscripción y pulsa Restaurar compras. Usa la misma cuenta de Apple con la que compraste. Si no aparece nada, revisa tu conexión e inténtalo de nuevo."],
+ ["¿Cómo cancelo mi suscripción?", "Ajustes de iOS → tu nombre → Suscripciones → cancela Seed Premium. Mantienes el acceso premium hasta el final del periodo pagado."],
+ ["¿Por qué no recibí una notificación?", "Permite las notificaciones de Seed en los Ajustes de iOS. Las notificaciones del temporizador solo se usan cuando las Actividades en vivo están desactivadas; si el temporizador ya aparece en tu pantalla bloqueada, ese es tu aviso."],
+ ["¿Qué pasa con mis datos?", "Las sesiones, etiquetas y ajustes se guardan solo en tu dispositivo. Borrar la app los elimina. No tenemos servidor ni sistema de cuentas."],
+ ["Privacidad", "Sin anuncios, sin cuentas, sin seguimiento. Lee la <a href=\"privacy.html#es\">política de privacidad</a>."]
+]},
+it: {title: "Aiuto e contatti", date: "Di solito rispondiamo entro due giorni lavorativi.", s: [
+ ["Contattaci", "Email: {EMAIL}. Indicaci il modello del dispositivo, la versione di iOS e cosa è successo. Gli screenshot aiutano molto."],
+ ["Come funziona il timer?", "Seed usa la tecnica del Pomodoro: 25 minuti di concentrazione, poi 5 minuti di pausa breve e una pausa più lunga dopo alcuni cicli. Le pause non partono mai da sole; tocca Avvia quando sei pronto. Puoi cambiare tutte le durate nel pannello delle impostazioni dei tag, nella scheda del timer."],
+ ["Come ripristino l'acquisto?", "Apri la schermata dell'abbonamento e tocca Ripristina acquisti. Usa lo stesso account Apple con cui hai acquistato. Se non compare nulla, controlla la connessione e riprova."],
+ ["Come annullo l'abbonamento?", "Impostazioni iOS → il tuo nome → Abbonamenti → annulla Seed Premium. Mantieni l'accesso premium fino alla fine del periodo pagato."],
+ ["Perché non ho ricevuto una notifica?", "Consenti le notifiche di Seed nelle Impostazioni iOS. Le notifiche del timer si usano solo quando le Attività Live sono disattivate; se il timer è già sulla schermata di blocco, quello è il tuo avviso."],
+ ["Che fine fanno i miei dati?", "Sessioni, tag e impostazioni restano solo sul tuo dispositivo. Eliminando l'app vengono eliminati. Non abbiamo server né account."],
+ ["Privacy", "Niente pubblicità, niente account, niente tracciamento. Leggi l'<a href=\"privacy.html#it\">informativa sulla privacy</a>."]
+]},
+"pt-BR": {title: "Ajuda e contato", date: "Normalmente respondemos em até dois dias úteis.", s: [
+ ["Fale com a gente", "E-mail: {EMAIL}. Conte o modelo do seu aparelho, a versão do iOS e o que aconteceu. Capturas de tela ajudam muito."],
+ ["Como o timer funciona?", "O Seed usa a técnica Pomodoro: 25 minutos de foco, depois 5 minutos de pausa curta e uma pausa mais longa após alguns ciclos. As pausas nunca começam sozinhas; toque em Iniciar quando estiver pronto. Você pode alterar todas as durações na folha de ajustes da etiqueta, na aba do timer."],
+ ["Como restauro minha compra?", "Abra a tela de assinatura e toque em Restaurar compras. Use a mesma conta Apple da compra. Se nada aparecer, verifique sua conexão e tente de novo."],
+ ["Como cancelo minha assinatura?", "Ajustes do iOS → seu nome → Assinaturas → cancele o Seed Premium. Você mantém o acesso premium até o fim do período pago."],
+ ["Por que não recebi uma notificação?", "Permita as notificações do Seed nos Ajustes do iOS. As notificações do timer só são usadas quando as Atividades ao Vivo estão desligadas; se o timer já aparece na tela bloqueada, esse é o seu aviso."],
+ ["O que acontece com meus dados?", "Sessões, etiquetas e ajustes ficam só no seu dispositivo. Excluir o app apaga tudo. Não temos servidor nem contas."],
+ ["Privacidade", "Sem anúncios, sem contas, sem rastreamento. Leia a <a href=\"privacy.html#pt-BR\">política de privacidade</a>."]
+]},
+nl: {title: "Hulp & contact", date: "We reageren meestal binnen twee werkdagen.", s: [
+ ["Neem contact op", "E-mail: {EMAIL}. Vermeld je apparaatmodel, je iOS-versie en wat er gebeurde. Screenshots helpen enorm."],
+ ["Hoe werkt de timer?", "Seed gebruikt de Pomodoro-techniek: 25 minuten focussen, dan 5 minuten korte pauze en na een paar cycli een langere pauze. Pauzes starten nooit vanzelf; tik op Start wanneer je klaar bent. Je kunt alle duurinstellingen wijzigen in het tag-instellingenblad op het timer-tabblad."],
+ ["Hoe herstel ik mijn aankoop?", "Open het abonnementsscherm en tik op Aankopen herstellen. Gebruik hetzelfde Apple-account als bij de aankoop. Verschijnt er niets, controleer je verbinding en probeer opnieuw."],
+ ["Hoe zeg ik mijn abonnement op?", "iOS-instellingen → je naam → Abonnementen → zeg Seed Premium op. Je houdt premium tot het einde van de betaalde periode."],
+ ["Waarom kreeg ik geen melding?", "Sta meldingen voor Seed toe in de iOS-instellingen. Timermeldingen worden alleen gebruikt als Live Activiteiten uit staan; staat de timer al op je vergrendelscherm, dan is dat je melding."],
+ ["Wat gebeurt er met mijn gegevens?", "Sessies, tags en instellingen staan alleen op je apparaat. De app verwijderen wist ze. We hebben geen server en geen accounts."],
+ ["Privacy", "Geen advertenties, geen accounts, geen tracking. Lees het volledige <a href=\"privacy.html#nl\">privacybeleid</a>."]
+]},
+ru: {title: "Помощь и контакты", date: "Обычно мы отвечаем в течение двух рабочих дней.", s: [
+ ["Связаться с нами", "E-mail: {EMAIL}. Укажите модель устройства, версию iOS и что произошло. Скриншоты очень помогают."],
+ ["Как работает таймер?", "Seed использует технику Pomodoro: 25 минут концентрации, затем 5 минут короткого перерыва и более длинный перерыв после нескольких циклов. Перерывы никогда не начинаются автоматически; нажмите «Старт», когда будете готовы. Все длительности меняются в панели настроек тега на вкладке таймера."],
+ ["Как восстановить покупку?", "Откройте экран подписки и нажмите «Восстановить покупки». Используйте тот же аккаунт Apple, с которого была покупка. Если ничего не появилось, проверьте соединение и повторите."],
+ ["Как отменить подписку?", "Настройки iOS → ваше имя → Подписки → отмените Seed Premium. Премиум сохранится до конца оплаченного периода."],
+ ["Почему не пришло уведомление?", "Разрешите уведомления для Seed в настройках iOS. Уведомления таймера используются только когда Live Activities выключены; если таймер уже виден на экране блокировки, это и есть ваше уведомление."],
+ ["Что происходит с моими данными?", "Сессии, теги и настройки хранятся только на устройстве. Удаление приложения удаляет их. У нас нет сервера и аккаунтов."],
+ ["Конфиденциальность", "Без рекламы, без аккаунтов, без слежки. Читайте <a href=\"privacy.html#ru\">политику конфиденциальности</a>."]
+]},
+ja: {title: "ヘルプ・お問い合わせ", date: "通常2営業日以内に返信します。", s: [
+ ["お問い合わせ", "メール: {EMAIL}。端末のモデル、iOS のバージョン、起きたことをお知らせください。スクリーンショットがあると助かります。"],
+ ["タイマーの仕組み", "Seed はポモドーロ・テクニックを使います。25分の集中のあとに5分の短い休憩、数サイクル後に長めの休憩です。休憩は自動では始まりません。準備ができたら「開始」をタップしてください。すべての時間はタイマータブのタグ設定シートで変更できます。"],
+ ["購入を復元するには", "サブスクリプション画面を開き「購入を復元」をタップします。購入したときと同じ Apple アカウントを使用してください。何も表示されない場合は、接続を確認して再度お試しください。"],
+ ["サブスクリプションの解約", "iOS の「設定」→ご自分の名前→「サブスクリプション」→Seed Premium を解約します。支払済み期間の終了まではプレミアムを利用できます。"],
+ ["通知が届かない理由", "iOS の「設定」で Seed の通知を許可してください。タイマー通知はライブアクティビティがオフのときだけ使われます。タイマーがすでにロック画面に表示されていれば、それが通知です。"],
+ ["データについて", "セッション、タグ、設定は端末にのみ保存されます。アプリを削除すると消えます。サーバーもアカウントもありません。"],
+ ["プライバシー", "広告なし、アカウントなし、トラッキングなし。<a href=\"privacy.html#ja\">プライバシーポリシー</a>をお読みください。"]
+]},
+ko: {title: "도움말 및 문의", date: "보통 영업일 기준 2일 이내에 답변합니다.", s: [
+ ["문의하기", "이메일: {EMAIL}. 기기 모델, iOS 버전, 발생한 상황을 알려 주세요. 스크린샷이 큰 도움이 됩니다."],
+ ["타이머 작동 방식", "Seed는 포모도로 기법을 사용합니다. 25분 집중 후 5분 짧은 휴식, 몇 번의 사이클 후에는 더 긴 휴식입니다. 휴식은 자동으로 시작되지 않습니다. 준비되면 시작을 탭하세요. 모든 시간은 타이머 탭의 태그 설정 시트에서 변경할 수 있습니다."],
+ ["구매 복원 방법", "구독 화면을 열고 구매 복원을 탭하세요. 구매했던 것과 같은 Apple 계정을 사용하세요. 아무것도 표시되지 않으면 연결을 확인하고 다시 시도하세요."],
+ ["구독 취소 방법", "iOS 설정 → 이름 → 구독 → Seed Premium을 취소하세요. 결제한 기간이 끝날 때까지 프리미엄을 사용할 수 있습니다."],
+ ["알림이 오지 않는 이유", "iOS 설정에서 Seed 알림을 허용하세요. 타이머 알림은 라이브 활동이 꺼져 있을 때만 사용됩니다. 타이머가 이미 잠금 화면에 표시된다면 그것이 알림입니다."],
+ ["데이터는 어떻게 되나요?", "세션, 태그, 설정은 기기에만 저장됩니다. 앱을 삭제하면 함께 삭제됩니다. 서버와 계정 시스템이 없습니다."],
+ ["개인정보", "광고 없음, 계정 없음, 추적 없음. <a href=\"privacy.html#ko\">개인정보 처리방침</a>을 읽어 보세요."]
+]},
+"zh-Hans": {title: "帮助与联系", date: "我们通常在两个工作日内回复。", s: [
+ ["联系我们", "邮箱：{EMAIL}。请告诉我们设备型号、iOS 版本和发生的情况。截图会很有帮助。"],
+ ["计时器如何工作", "Seed 使用番茄工作法：25 分钟专注后休息 5 分钟，若干轮后会有更长的休息。休息不会自动开始，准备好后点按开始。所有时长都可以在计时器标签页的标签设置中修改。"],
+ ["如何恢复购买", "打开订阅页面并点按恢复购买。请使用购买时相同的 Apple 账户。如果没有显示任何内容，请检查网络后重试。"],
+ ["如何取消订阅", "iOS 设置 → 您的姓名 → 订阅 → 取消 Seed Premium。在已付费周期结束前仍可使用高级功能。"],
+ ["为什么没有收到通知", "请在 iOS 设置中允许 Seed 的通知。计时器通知仅在实时活动关闭时使用；如果计时器已显示在锁定屏幕上，那就是您的提醒。"],
+ ["我的数据会怎样", "会话、标签和设置仅存储在您的设备上。删除应用即删除这些数据。我们没有服务器，也没有账户系统。"],
+ ["隐私", "无广告、无账户、无追踪。请阅读<a href=\"privacy.html#zh-Hans\">隐私政策</a>。"]
+]},
+ar: {title: "المساعدة والتواصل", date: "نرد عادةً خلال يومي عمل.", s: [
+ ["تواصل معنا", "البريد الإلكتروني: {EMAIL}. يرجى ذكر طراز جهازك وإصدار iOS وما حدث. تساعد لقطات الشاشة كثيرًا."],
+ ["كيف يعمل المؤقت؟", "يستخدم Seed تقنية بومودورو: 25 دقيقة تركيز ثم استراحة قصيرة 5 دقائق، وبعد عدة دورات استراحة أطول. لا تبدأ الاستراحات تلقائيًا أبدًا؛ اضغط ابدأ عندما تكون جاهزًا. يمكنك تغيير جميع المدد من لوحة إعدادات الوسم في تبويب المؤقت."],
+ ["كيف أستعيد مشتري؟", "افتح شاشة الاشتراك واضغط استعادة المشتريات. استخدم نفس حساب Apple الذي تم الشراء به. إذا لم يظهر شيء، تحقق من اتصالك وحاول مرة أخرى."],
+ ["كيف ألغي اشتراكي؟", "إعدادات iOS ← اسمك ← الاشتراكات ← ألغِ Seed Premium. تحتفظ بالميزات المميزة حتى نهاية الفترة المدفوعة."],
+ ["لماذا لم يصلني إشعار؟", "اسمح بإشعارات Seed في إعدادات iOS. تُستخدم إشعارات المؤقت فقط عندما تكون الأنشطة المباشرة متوقفة؛ إذا كان المؤقت يظهر بالفعل على شاشة القفل فذلك تنبيهك."],
+ ["ماذا يحدث لبياناتي؟", "تُحفظ الجلسات والوسوم والإعدادات على جهازك فقط. حذف التطبيق يحذفها. لا يوجد لدينا خادم ولا نظام حسابات."],
+ ["الخصوصية", "لا إعلانات ولا حسابات ولا تتبع. اقرأ <a href=\"privacy.html#ar\">سياسة الخصوصية</a> الكاملة."]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>

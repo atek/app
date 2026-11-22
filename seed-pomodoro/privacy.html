@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Seed Pomodoro Timer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Privacy Policy", date: "Effective November 22, 2026", s: [
+ ["Summary", "Seed Pomodoro Timer is a focus timer. There are no accounts, no ads, no analytics and no tracking. We do not collect personal information about you."],
+ ["What stays on your device", "Your focus sessions, tags, timer settings, daily goals, badges, leaves, language and theme are stored only on your device. They are never sent to us. Deleting the app deletes this data."],
+ ["Purchases", "Seed Premium is an auto-renewable subscription handled by Apple. We never see your payment details. To validate and restore purchases, the app uses RevenueCat. RevenueCat receives a randomly generated anonymous app user ID and Apple's purchase receipt. This is not linked to your identity and is used only to unlock and restore premium features. RevenueCat privacy policy: https://www.revenuecat.com/privacy"],
+ ["Notifications", "Timer notifications are scheduled locally on your device. The app has no notification server and never sends your data anywhere."],
+ ["No ads, no tracking", "There is no advertising, no third-party analytics and no tracking across apps or websites. We do not ask for App Tracking Transparency permission because we do not track you."],
+ ["Your rights", "Because we do not hold personal information about you, there is nothing for us to access, correct or delete. If you have a question, contact us."],
+ ["Changes", "If this policy changes, we will update this page and the date above."],
+ ["Contact", "Questions about privacy: {EMAIL}"]
+]},
+tr: {title: "Gizlilik Politikası", date: "Yürürlük tarihi: 22 Kasım 2026", s: [
+ ["Özet", "Seed Pomodoro Timer bir odaklanma zamanlayıcısıdır. Hesap yok, reklam yok, analiz yok, takip yok. Hakkınızda kişisel bilgi toplamıyoruz."],
+ ["Cihazınızda kalanlar", "Odaklanma oturumlarınız, etiketleriniz, zamanlayıcı ayarlarınız, günlük hedefleriniz, rozetleriniz, yapraklarınız, dil ve tema seçiminiz yalnızca cihazınızda saklanır. Bize hiçbir zaman gönderilmez. Uygulamayı silerseniz bu veriler silinir."],
+ ["Satın almalar", "Seed Premium, Apple üzerinden yönetilen otomatik yenilenen bir aboneliktir. Ödeme bilgilerinizi hiçbir zaman görmeyiz. Satın almaları doğrulamak ve geri yüklemek için uygulama RevenueCat kullanır. RevenueCat, rastgele oluşturulmuş anonim bir uygulama kullanıcı kimliği ve Apple'ın satın alma makbuzunu alır. Bu bilgiler kimliğinizle ilişkilendirilmez ve yalnızca premium özellikleri açmak ve geri yüklemek için kullanılır. RevenueCat gizlilik politikası: https://www.revenuecat.com/privacy"],
+ ["Bildirimler", "Zamanlayıcı bildirimleri cihazınızda yerel olarak planlanır. Uygulamanın bildirim sunucusu yoktur ve verilerinizi hiçbir yere göndermez."],
+ ["Reklam ve takip yok", "Reklam, üçüncü taraf analizi ve uygulamalar ya da siteler arası takip yoktur. Sizi takip etmediğimiz için Uygulama Takibi Şeffaflığı izni istemiyoruz."],
+ ["Haklarınız", "Hakkınızda kişisel bilgi tutmadığımız için erişilecek, düzeltilecek veya silinecek bir veri yoktur. Sorunuz varsa bize yazın."],
+ ["Değişiklikler", "Bu politika değişirse bu sayfayı ve yukarıdaki tarihi güncelleriz."],
+ ["İletişim", "Gizlilikle ilgili sorular: {EMAIL}"]
+]},
+de: {title: "Datenschutzerklärung", date: "Gültig ab 22. November 2026", s: [
+ ["Zusammenfassung", "Seed Pomodoro Timer ist ein Fokus-Timer. Es gibt keine Konten, keine Werbung, keine Analyse und kein Tracking. Wir erheben keine personenbezogenen Daten über Sie."],
+ ["Was auf dem Gerät bleibt", "Ihre Fokus-Sitzungen, Tags, Timer-Einstellungen, Tagesziele, Abzeichen, Blätter, Sprache und Ihr Theme werden nur auf dem Gerät gespeichert. Sie werden nie an uns gesendet. Wenn Sie die App löschen, sind diese Daten weg."],
+ ["Käufe", "Seed Premium ist ein automatisch verlängerbares Abo, das über Apple abgewickelt wird. Wir sehen Ihre Zahlungsdaten nie. Zur Prüfung und Wiederherstellung von Käufen nutzt die App RevenueCat. RevenueCat erhält eine zufällig erzeugte, anonyme App-Benutzer-ID und den Kaufbeleg von Apple. Das ist nicht mit Ihrer Person verknüpft und dient nur dazu, Premium-Funktionen freizuschalten und wiederherzustellen. Datenschutz von RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Mitteilungen", "Timer-Mitteilungen werden lokal auf dem Gerät geplant. Die App hat keinen Mitteilungsserver und sendet Ihre Daten nirgendwohin."],
+ ["Keine Werbung, kein Tracking", "Es gibt keine Werbung, keine Analyse durch Dritte und kein Tracking über Apps oder Websites hinweg. Wir fragen nicht nach der App-Tracking-Transparenz-Erlaubnis, weil wir Sie nicht tracken."],
+ ["Ihre Rechte", "Da wir keine personenbezogenen Daten über Sie speichern, gibt es bei uns nichts einzusehen, zu berichtigen oder zu löschen. Bei Fragen schreiben Sie uns."],
+ ["Änderungen", "Wenn sich diese Erklärung ändert, passen wir diese Seite und das Datum oben an."],
+ ["Kontakt", "Fragen zum Datenschutz: {EMAIL}"]
+]},
+fr: {title: "Politique de confidentialité", date: "En vigueur le 22 novembre 2026", s: [
+ ["Résumé", "Seed Pomodoro Timer est un minuteur de concentration. Il n'y a pas de compte, pas de publicité, pas d'analyse et pas de suivi. Nous ne collectons aucune information personnelle vous concernant."],
+ ["Ce qui reste sur votre appareil", "Vos sessions de concentration, vos étiquettes, vos réglages de minuteur, vos objectifs quotidiens, vos badges, vos feuilles, la langue et le thème sont stockés uniquement sur votre appareil. Ils ne nous sont jamais envoyés. Supprimer l'app supprime ces données."],
+ ["Achats", "Seed Premium est un abonnement à renouvellement automatique géré par Apple. Nous ne voyons jamais vos informations de paiement. Pour vérifier et restaurer les achats, l'app utilise RevenueCat. RevenueCat reçoit un identifiant d'utilisateur anonyme généré aléatoirement et le reçu d'achat d'Apple. Ceci n'est pas lié à votre identité et sert uniquement à débloquer et restaurer les fonctions premium. Confidentialité de RevenueCat : https://www.revenuecat.com/privacy"],
+ ["Notifications", "Les notifications du minuteur sont programmées localement sur votre appareil. L'app n'a pas de serveur de notifications et n'envoie vos données nulle part."],
+ ["Pas de publicité, pas de suivi", "Aucune publicité, aucune analyse tierce et aucun suivi entre apps ou sites. Nous ne demandons pas l'autorisation de transparence du suivi des apps, car nous ne vous suivons pas."],
+ ["Vos droits", "Comme nous ne détenons aucune information personnelle vous concernant, il n'y a rien à consulter, corriger ou supprimer chez nous. Pour toute question, écrivez-nous."],
+ ["Modifications", "Si cette politique change, nous mettrons à jour cette page et la date ci-dessus."],
+ ["Contact", "Questions sur la confidentialité : {EMAIL}"]
+]},
+es: {title: "Política de privacidad", date: "Vigente desde el 22 de noviembre de 2026", s: [
+ ["Resumen", "Seed Pomodoro Timer es un temporizador de concentración. No hay cuentas, ni anuncios, ni analítica, ni seguimiento. No recopilamos información personal sobre ti."],
+ ["Lo que se queda en tu dispositivo", "Tus sesiones de concentración, etiquetas, ajustes del temporizador, objetivos diarios, insignias, hojas, idioma y tema se guardan solo en tu dispositivo. Nunca se nos envían. Si borras la app, estos datos desaparecen."],
+ ["Compras", "Seed Premium es una suscripción de renovación automática gestionada por Apple. Nunca vemos tus datos de pago. Para verificar y restaurar compras, la app usa RevenueCat. RevenueCat recibe un identificador de usuario anónimo generado aleatoriamente y el recibo de compra de Apple. No está vinculado a tu identidad y solo se usa para desbloquear y restaurar funciones premium. Privacidad de RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Notificaciones", "Los avisos del temporizador se programan localmente en tu dispositivo. La app no tiene servidor de notificaciones y no envía tus datos a ningún sitio."],
+ ["Sin anuncios ni seguimiento", "No hay publicidad, ni analítica de terceros, ni seguimiento entre apps o sitios web. No pedimos permiso de transparencia de seguimiento porque no te seguimos."],
+ ["Tus derechos", "Como no guardamos información personal sobre ti, no hay nada que consultar, corregir ni eliminar por nuestra parte. Si tienes dudas, escríbenos."],
+ ["Cambios", "Si esta política cambia, actualizaremos esta página y la fecha de arriba."],
+ ["Contacto", "Preguntas sobre privacidad: {EMAIL}"]
+]},
+it: {title: "Informativa sulla privacy", date: "In vigore dal 22 novembre 2026", s: [
+ ["Riepilogo", "Seed Pomodoro Timer è un timer per la concentrazione. Non ci sono account, pubblicità, analisi o tracciamento. Non raccogliamo informazioni personali su di te."],
+ ["Cosa resta sul dispositivo", "Le tue sessioni di concentrazione, i tag, le impostazioni del timer, gli obiettivi giornalieri, i badge, le foglie, la lingua e il tema sono salvati solo sul tuo dispositivo. Non vengono mai inviati a noi. Se elimini l'app, questi dati spariscono."],
+ ["Acquisti", "Seed Premium è un abbonamento con rinnovo automatico gestito da Apple. Non vediamo mai i tuoi dati di pagamento. Per verificare e ripristinare gli acquisti, l'app usa RevenueCat. RevenueCat riceve un ID utente anonimo generato casualmente e la ricevuta di acquisto di Apple. Non è collegato alla tua identità e serve solo a sbloccare e ripristinare le funzioni premium. Privacy di RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Notifiche", "Le notifiche del timer sono programmate localmente sul dispositivo. L'app non ha un server di notifiche e non invia i tuoi dati da nessuna parte."],
+ ["Niente pubblicità, niente tracciamento", "Nessuna pubblicità, nessuna analisi di terze parti e nessun tracciamento tra app o siti. Non chiediamo il permesso di trasparenza del tracciamento perché non ti tracciamo."],
+ ["I tuoi diritti", "Poiché non conserviamo informazioni personali su di te, non c'è nulla da consultare, correggere o eliminare da parte nostra. Per domande, scrivici."],
+ ["Modifiche", "Se questa informativa cambia, aggiorneremo questa pagina e la data sopra."],
+ ["Contatti", "Domande sulla privacy: {EMAIL}"]
+]},
+"pt-BR": {title: "Política de Privacidade", date: "Em vigor desde 22 de novembro de 2026", s: [
+ ["Resumo", "O Seed Pomodoro Timer é um timer de foco. Não há contas, anúncios, análises nem rastreamento. Não coletamos informações pessoais sobre você."],
+ ["O que fica no seu dispositivo", "Suas sessões de foco, etiquetas, ajustes do timer, metas diárias, medalhas, folhas, idioma e tema ficam armazenados apenas no seu dispositivo. Eles nunca são enviados para nós. Se você excluir o app, esses dados são apagados."],
+ ["Compras", "O Seed Premium é uma assinatura com renovação automática gerenciada pela Apple. Nunca vemos seus dados de pagamento. Para validar e restaurar compras, o app usa o RevenueCat. O RevenueCat recebe um ID de usuário anônimo gerado aleatoriamente e o recibo de compra da Apple. Isso não é vinculado à sua identidade e serve apenas para liberar e restaurar os recursos premium. Privacidade do RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Notificações", "As notificações do timer são agendadas localmente no seu dispositivo. O app não tem servidor de notificações e não envia seus dados para lugar nenhum."],
+ ["Sem anúncios, sem rastreamento", "Não há publicidade, análise de terceiros nem rastreamento entre apps ou sites. Não pedimos a permissão de Transparência no Rastreamento de Apps porque não rastreamos você."],
+ ["Seus direitos", "Como não guardamos informações pessoais sobre você, não há nada para acessar, corrigir ou excluir da nossa parte. Se tiver dúvidas, fale com a gente."],
+ ["Alterações", "Se esta política mudar, atualizaremos esta página e a data acima."],
+ ["Contato", "Dúvidas sobre privacidade: {EMAIL}"]
+]},
+nl: {title: "Privacybeleid", date: "Van kracht vanaf 22 november 2026", s: [
+ ["Samenvatting", "Seed Pomodoro Timer is een focustimer. Er zijn geen accounts, geen advertenties, geen analyses en geen tracking. We verzamelen geen persoonlijke gegevens over je."],
+ ["Wat op je apparaat blijft", "Je focussessies, tags, timerinstellingen, dagdoelen, badges, bladeren, taal en thema worden alleen op je apparaat opgeslagen. Ze worden nooit naar ons verstuurd. Als je de app verwijdert, zijn deze gegevens weg."],
+ ["Aankopen", "Seed Premium is een automatisch verlengend abonnement dat via Apple loopt. We zien je betaalgegevens nooit. Om aankopen te controleren en te herstellen gebruikt de app RevenueCat. RevenueCat ontvangt een willekeurig gegenereerde anonieme app-gebruikers-ID en de aankoopbon van Apple. Dit is niet aan jouw identiteit gekoppeld en dient alleen om premiumfuncties te ontgrendelen en te herstellen. Privacybeleid van RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Meldingen", "Timermeldingen worden lokaal op je apparaat ingepland. De app heeft geen meldingsserver en stuurt je gegevens nergens heen."],
+ ["Geen advertenties, geen tracking", "Er is geen advertentie, geen analyse door derden en geen tracking tussen apps of websites. We vragen niet om App Tracking Transparency-toestemming omdat we je niet volgen."],
+ ["Je rechten", "Omdat we geen persoonlijke gegevens over je bewaren, valt er bij ons niets in te zien, te corrigeren of te verwijderen. Heb je een vraag, mail ons."],
+ ["Wijzigingen", "Als dit beleid verandert, passen we deze pagina en de datum hierboven aan."],
+ ["Contact", "Vragen over privacy: {EMAIL}"]
+]},
+ru: {title: "Политика конфиденциальности", date: "Действует с 22 ноября 2026 г.", s: [
+ ["Кратко", "Seed Pomodoro Timer — это таймер для концентрации. Здесь нет аккаунтов, рекламы, аналитики и отслеживания. Мы не собираем ваши персональные данные."],
+ ["Что остаётся на устройстве", "Ваши сессии, теги, настройки таймера, дневные цели, значки, листья, язык и тема хранятся только на устройстве. Они никогда не отправляются нам. При удалении приложения эти данные удаляются."],
+ ["Покупки", "Seed Premium — это подписка с автоматическим продлением, оформляемая через Apple. Мы никогда не видим ваши платёжные данные. Для проверки и восстановления покупок приложение использует RevenueCat. RevenueCat получает случайный анонимный идентификатор пользователя приложения и чек Apple. Это не связано с вашей личностью и используется только для разблокировки и восстановления премиум-функций. Политика конфиденциальности RevenueCat: https://www.revenuecat.com/privacy"],
+ ["Уведомления", "Уведомления таймера создаются локально на устройстве. У приложения нет сервера уведомлений, и оно никуда не передаёт ваши данные."],
+ ["Без рекламы и слежки", "Нет рекламы, сторонней аналитики и отслеживания между приложениями и сайтами. Мы не запрашиваем разрешение App Tracking Transparency, потому что не отслеживаем вас."],
+ ["Ваши права", "Поскольку мы не храним ваши персональные данные, нам нечего предоставлять, исправлять или удалять. Если есть вопросы, напишите нам."],
+ ["Изменения", "Если политика изменится, мы обновим эту страницу и дату выше."],
+ ["Контакты", "Вопросы о конфиденциальности: {EMAIL}"]
+]},
+ja: {title: "プライバシーポリシー", date: "2026年11月22日 施行", s: [
+ ["概要", "Seed Pomodoro Timer は集中用のタイマーアプリです。アカウント、広告、解析、トラッキングはありません。個人情報を収集しません。"],
+ ["端末に保存される情報", "集中セッション、タグ、タイマー設定、1日の目標、バッジ、葉、言語、テーマはお使いの端末にのみ保存されます。当方に送信されることはありません。アプリを削除するとこれらのデータも削除されます。"],
+ ["購入", "Seed Premium は Apple が処理する自動更新サブスクリプションです。お支払い情報を当方が見ることはありません。購入の確認と復元のために RevenueCat を使用します。RevenueCat はランダムに生成された匿名のアプリユーザーIDと Apple の購入レシートを受け取ります。これはあなたの身元とは結び付かず、プレミアム機能の解放と復元のみに使われます。RevenueCat のプライバシーポリシー: https://www.revenuecat.com/privacy"],
+ ["通知", "タイマーの通知は端末上でローカルに予約されます。通知サーバーはなく、データをどこにも送信しません。"],
+ ["広告・トラッキングなし", "広告、第三者による解析、アプリやサイトをまたぐトラッキングはありません。トラッキングを行わないため、App Tracking Transparency の許可も求めません。"],
+ ["あなたの権利", "個人情報を保有していないため、開示・訂正・削除すべきデータはありません。ご質問があればご連絡ください。"],
+ ["変更", "本方針を変更した場合は、このページと上記の日付を更新します。"],
+ ["お問い合わせ", "プライバシーに関するご質問: {EMAIL}"]
+]},
+ko: {title: "개인정보 처리방침", date: "2026년 11월 22일 시행", s: [
+ ["요약", "Seed Pomodoro Timer는 집중 타이머 앱입니다. 계정, 광고, 분석, 추적이 없습니다. 개인정보를 수집하지 않습니다."],
+ ["기기에 남는 정보", "집중 세션, 태그, 타이머 설정, 일일 목표, 배지, 잎, 언어, 테마는 기기에만 저장됩니다. 당사로 전송되지 않습니다. 앱을 삭제하면 이 데이터도 삭제됩니다."],
+ ["구매", "Seed Premium은 Apple을 통해 처리되는 자동 갱신 구독입니다. 당사는 결제 정보를 볼 수 없습니다. 구매 확인과 복원을 위해 RevenueCat을 사용합니다. RevenueCat은 무작위로 생성된 익명 앱 사용자 ID와 Apple의 구매 영수증을 받습니다. 이는 신원과 연결되지 않으며 프리미엄 기능을 해제하고 복원하는 데만 사용됩니다. RevenueCat 개인정보 처리방침: https://www.revenuecat.com/privacy"],
+ ["알림", "타이머 알림은 기기에서 로컬로 예약됩니다. 알림 서버가 없으며 데이터를 어디에도 보내지 않습니다."],
+ ["광고·추적 없음", "광고, 제3자 분석, 앱·웹사이트 간 추적이 없습니다. 추적하지 않기 때문에 앱 추적 투명성 권한도 요청하지 않습니다."],
+ ["귀하의 권리", "개인정보를 보관하지 않으므로 열람, 정정, 삭제할 데이터가 없습니다. 문의가 있으면 연락해 주세요."],
+ ["변경", "방침이 바뀌면 이 페이지와 위 날짜를 업데이트합니다."],
+ ["문의", "개인정보 관련 문의: {EMAIL}"]
+]},
+"zh-Hans": {title: "隐私政策", date: "2026年11月22日生效", s: [
+ ["概述", "Seed Pomodoro Timer 是一款专注计时器。没有账户、没有广告、没有分析、没有追踪。我们不收集您的个人信息。"],
+ ["保留在设备上的数据", "您的专注记录、标签、计时器设置、每日目标、徽章、叶子、语言和主题仅保存在您的设备上，绝不会发送给我们。删除应用即删除这些数据。"],
+ ["购买", "Seed Premium 是由 Apple 处理的可自动续期订阅。我们绝不会看到您的付款信息。应用使用 RevenueCat 来验证和恢复购买。RevenueCat 会收到随机生成的匿名应用用户 ID 和 Apple 的购买凭证。这与您的身份无关，仅用于解锁和恢复高级功能。RevenueCat 隐私政策：https://www.revenuecat.com/privacy"],
+ ["通知", "计时器通知在您的设备上本地安排。应用没有通知服务器，也不会将您的数据发送到任何地方。"],
+ ["无广告、无追踪", "没有广告、没有第三方分析，也没有跨应用或网站的追踪。我们不追踪您，因此不会请求应用追踪透明度权限。"],
+ ["您的权利", "由于我们不保存您的个人信息，因此没有可供查阅、更正或删除的数据。如有疑问，请联系我们。"],
+ ["变更", "如果本政策发生变化，我们会更新此页面和上述日期。"],
+ ["联系我们", "隐私相关问题：{EMAIL}"]
+]},
+ar: {title: "سياسة الخصوصية", date: "سارية اعتبارًا من 22 نوفمبر 2026", s: [
+ ["نظرة عامة", "Seed Pomodoro Timer هو مؤقت للتركيز. لا توجد حسابات ولا إعلانات ولا تحليلات ولا تتبع. لا نجمع أي معلومات شخصية عنك."],
+ ["ما يبقى على جهازك", "جلسات التركيز والوسوم وإعدادات المؤقت والأهداف اليومية والشارات والأوراق واللغة والمظهر تُحفظ على جهازك فقط. ولا تُرسل إلينا أبدًا. حذف التطبيق يحذف هذه البيانات."],
+ ["المشتريات", "Seed Premium اشتراك يتجدد تلقائيًا تديره Apple. لا نرى بيانات الدفع الخاصة بك أبدًا. للتحقق من المشتريات واستعادتها يستخدم التطبيق RevenueCat. يتلقى RevenueCat معرّف مستخدم تطبيق مجهولًا عشوائيًا وإيصال الشراء من Apple. هذا غير مرتبط بهويتك ويُستخدم فقط لفتح الميزات المميزة واستعادتها. سياسة خصوصية RevenueCat: https://www.revenuecat.com/privacy"],
+ ["الإشعارات", "تُجدول إشعارات المؤقت محليًا على جهازك. لا يوجد للتطبيق خادم إشعارات ولا يرسل بياناتك إلى أي مكان."],
+ ["لا إعلانات ولا تتبع", "لا توجد إعلانات ولا تحليلات من جهات خارجية ولا تتبع بين التطبيقات أو المواقع. لا نطلب إذن شفافية تتبع التطبيقات لأننا لا نتتبعك."],
+ ["حقوقك", "بما أننا لا نحتفظ بمعلومات شخصية عنك، فلا يوجد لدينا شيء للوصول إليه أو تصحيحه أو حذفه. إذا كان لديك سؤال فاكتب إلينا."],
+ ["التغييرات", "إذا تغيّرت هذه السياسة فسنحدّث هذه الصفحة والتاريخ أعلاه."],
+ ["التواصل", "أسئلة حول الخصوصية: {EMAIL}"]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use · Seed Pomodoro Timer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+en: {title: "Terms of Use", date: "Effective November 22, 2026", s: [
+ ["Service", "Seed Pomodoro Timer helps you focus using the Pomodoro technique. We grant you a personal, non-transferable licence to use the app on devices you own or control, for personal, non-commercial use."],
+ ["Subscriptions", "Seed Premium is an auto-renewable subscription available monthly or yearly. The price is shown in the app before purchase. Payment is charged to your Apple Account at confirmation of purchase. The subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel it anytime in App Store settings. Any unused part of a free trial is forfeited when you buy a subscription."],
+ ["Apple terms", "Purchases are processed by Apple. Apple's standard end user licence agreement also applies: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Acceptable use", "Do not reverse engineer, redistribute or resell the app, and do not use it in a way that breaks the law or harms others."],
+ ["No warranty", "The app is provided as is. We work hard to keep it reliable, but we cannot guarantee uninterrupted or error-free operation. Focus sessions are your own responsibility; do not rely on the timer where missing an alert could cause harm."],
+ ["Changes", "We may update the app and these terms. If the terms change, we will update this page and the date above. Continued use means you accept the updated terms."],
+ ["Contact", "Questions about these terms: {EMAIL}"]
+]},
+tr: {title: "Kullanım Koşulları", date: "Yürürlük tarihi: 22 Kasım 2026", s: [
+ ["Hizmet", "Seed Pomodoro Timer, Pomodoro tekniğiyle odaklanmanıza yardımcı olur. Sahip olduğunuz veya kontrol ettiğiniz cihazlarda uygulamayı kişisel ve ticari olmayan amaçlarla kullanmanız için size kişisel, devredilemez bir lisans veriyoruz."],
+ ["Abonelikler", "Seed Premium, aylık veya yıllık sunulan otomatik yenilenen bir aboneliktir. Fiyat satın almadan önce uygulamada gösterilir. Ödeme, satın alma onayında Apple Hesabınızdan tahsil edilir. Abonelik, mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece otomatik yenilenir. App Store ayarlarından istediğiniz zaman yönetebilir veya iptal edebilirsiniz. Abonelik satın aldığınızda ücretsiz deneme süresinin kullanılmayan kısmı sona erer."],
+ ["Apple koşulları", "Satın almalar Apple tarafından işlenir. Apple'ın standart son kullanıcı lisans sözleşmesi de geçerlidir: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Kabul edilebilir kullanım", "Uygulamayı tersine mühendislikle çözümlemeyin, yeniden dağıtmayın veya satmayın; yasaları ihlal edecek ya da başkalarına zarar verecek şekilde kullanmayın."],
+ ["Garanti yok", "Uygulama olduğu gibi sunulur. Güvenilir olması için çok çalışıyoruz ancak kesintisiz veya hatasız çalışacağını garanti edemeyiz. Odak seansları sizin sorumluluğunuzdadır; bir uyarının kaçırılması zarara yol açabilecek durumlarda zamanlayıcıya güvenmeyin."],
+ ["Değişiklikler", "Uygulamayı ve bu koşulları güncelleyebiliriz. Koşullar değişirse bu sayfayı ve yukarıdaki tarihi güncelleriz. Kullanmaya devam etmeniz güncel koşulları kabul ettiğiniz anlamına gelir."],
+ ["İletişim", "Bu koşullarla ilgili sorular: {EMAIL}"]
+]},
+de: {title: "Nutzungsbedingungen", date: "Gültig ab 22. November 2026", s: [
+ ["Dienst", "Seed Pomodoro Timer hilft Ihnen, mit der Pomodoro-Technik fokussiert zu arbeiten. Wir gewähren Ihnen eine persönliche, nicht übertragbare Lizenz zur Nutzung der App auf Geräten, die Ihnen gehören oder die Sie kontrollieren, für den persönlichen, nicht kommerziellen Gebrauch."],
+ ["Abonnements", "Seed Premium ist ein automatisch verlängerbares Abo, monatlich oder jährlich. Der Preis wird vor dem Kauf in der App angezeigt. Die Zahlung wird bei Kaufbestätigung von Ihrem Apple Account abgebucht. Das Abo verlängert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ende des aktuellen Zeitraums gekündigt wird. Sie können es jederzeit in den App Store-Einstellungen verwalten oder kündigen. Ein ungenutzter Teil einer kostenlosen Testphase verfällt mit dem Abschluss eines Abos."],
+ ["Apple-Bedingungen", "Käufe werden von Apple abgewickelt. Apples Standard-Endnutzer-Lizenzvertrag gilt zusätzlich: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Zulässige Nutzung", "Die App darf nicht zurückentwickelt, weiterverbreitet oder weiterverkauft werden. Nutzen Sie sie nicht gesetzwidrig oder so, dass anderen geschadet wird."],
+ ["Keine Gewährleistung", "Die App wird so bereitgestellt, wie sie ist. Wir arbeiten an ihrer Zuverlässigkeit, können aber keinen unterbrechungs- oder fehlerfreien Betrieb garantieren. Fokus-Sitzungen liegen in Ihrer Verantwortung; verlassen Sie sich nicht auf den Timer, wenn ein verpasster Alarm Schaden verursachen könnte."],
+ ["Änderungen", "Wir können die App und diese Bedingungen aktualisieren. Bei Änderungen aktualisieren wir diese Seite und das Datum oben. Die weitere Nutzung bedeutet, dass Sie die neuen Bedingungen akzeptieren."],
+ ["Kontakt", "Fragen zu diesen Bedingungen: {EMAIL}"]
+]},
+fr: {title: "Conditions d'utilisation", date: "En vigueur le 22 novembre 2026", s: [
+ ["Service", "Seed Pomodoro Timer vous aide à vous concentrer avec la technique Pomodoro. Nous vous accordons une licence personnelle et non transférable pour utiliser l'app sur les appareils que vous possédez ou contrôlez, à des fins personnelles et non commerciales."],
+ ["Abonnements", "Seed Premium est un abonnement à renouvellement automatique, mensuel ou annuel. Le prix est affiché dans l'app avant l'achat. Le paiement est débité de votre compte Apple à la confirmation de l'achat. L'abonnement se renouvelle automatiquement sauf annulation au moins 24 heures avant la fin de la période en cours. Vous pouvez le gérer ou l'annuler à tout moment dans les réglages de l'App Store. Toute partie non utilisée d'un essai gratuit est perdue lors de la souscription."],
+ ["Conditions Apple", "Les achats sont traités par Apple. Le contrat de licence utilisateur final standard d'Apple s'applique également : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Utilisation acceptable", "Ne désassemblez pas, ne redistribuez pas et ne revendez pas l'app ; ne l'utilisez pas d'une manière illégale ou nuisible envers autrui."],
+ ["Aucune garantie", "L'app est fournie en l'état. Nous travaillons à sa fiabilité, mais nous ne pouvons pas garantir un fonctionnement ininterrompu ou sans erreur. Les sessions de concentration relèvent de votre responsabilité ; ne vous fiez pas au minuteur si une alerte manquée pouvait causer un dommage."],
+ ["Modifications", "Nous pouvons mettre à jour l'app et ces conditions. En cas de changement, nous mettrons à jour cette page et la date ci-dessus. Continuer à utiliser l'app vaut acceptation des nouvelles conditions."],
+ ["Contact", "Questions sur ces conditions : {EMAIL}"]
+]},
+es: {title: "Términos de uso", date: "Vigentes desde el 22 de noviembre de 2026", s: [
+ ["Servicio", "Seed Pomodoro Timer te ayuda a concentrarte con la técnica Pomodoro. Te concedemos una licencia personal e intransferible para usar la app en dispositivos que poseas o controles, con fines personales y no comerciales."],
+ ["Suscripciones", "Seed Premium es una suscripción de renovación automática, mensual o anual. El precio se muestra en la app antes de comprar. El pago se carga a tu cuenta de Apple al confirmar la compra. La suscripción se renueva automáticamente salvo que se cancele al menos 24 horas antes del final del periodo actual. Puedes gestionarla o cancelarla en los ajustes del App Store. La parte no utilizada de una prueba gratuita se pierde al comprar la suscripción."],
+ ["Términos de Apple", "Las compras las procesa Apple. También se aplica el contrato de licencia de usuario final estándar de Apple: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Uso aceptable", "No descompiles, redistribuyas ni revendas la app; no la uses de forma ilegal o que dañe a otros."],
+ ["Sin garantía", "La app se ofrece tal cual. Trabajamos para que sea fiable, pero no podemos garantizar un funcionamiento ininterrumpido ni libre de errores. Las sesiones de concentración son tu responsabilidad; no dependas del temporizador si perder un aviso pudiera causar daños."],
+ ["Cambios", "Podemos actualizar la app y estos términos. Si cambian, actualizaremos esta página y la fecha de arriba. Seguir usando la app significa que aceptas los nuevos términos."],
+ ["Contacto", "Preguntas sobre estos términos: {EMAIL}"]
+]},
+it: {title: "Termini di utilizzo", date: "In vigore dal 22 novembre 2026", s: [
+ ["Servizio", "Seed Pomodoro Timer ti aiuta a concentrarti con la tecnica del Pomodoro. Ti concediamo una licenza personale e non trasferibile per usare l'app su dispositivi di tua proprietà o sotto il tuo controllo, per uso personale e non commerciale."],
+ ["Abbonamenti", "Seed Premium è un abbonamento con rinnovo automatico, mensile o annuale. Il prezzo è mostrato nell'app prima dell'acquisto. Il pagamento viene addebitato sul tuo account Apple alla conferma dell'acquisto. L'abbonamento si rinnova automaticamente se non viene annullato almeno 24 ore prima della fine del periodo in corso. Puoi gestirlo o annullarlo in qualsiasi momento nelle impostazioni dell'App Store. L'eventuale parte non utilizzata di una prova gratuita viene persa all'acquisto dell'abbonamento."],
+ ["Termini Apple", "Gli acquisti sono gestiti da Apple. Si applica anche il contratto di licenza per l'utente finale standard di Apple: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Uso consentito", "Non decompilare, ridistribuire o rivendere l'app; non usarla in modo illegale o dannoso per gli altri."],
+ ["Nessuna garanzia", "L'app è fornita così com'è. Lavoriamo per renderla affidabile, ma non possiamo garantire un funzionamento ininterrotto o privo di errori. Le sessioni di concentrazione sono sotto la tua responsabilità; non affidarti al timer se perdere un avviso potesse causare danni."],
+ ["Modifiche", "Possiamo aggiornare l'app e questi termini. Se cambiano, aggiorneremo questa pagina e la data sopra. Continuare a usare l'app significa accettare i nuovi termini."],
+ ["Contatti", "Domande su questi termini: {EMAIL}"]
+]},
+"pt-BR": {title: "Termos de Uso", date: "Em vigor desde 22 de novembro de 2026", s: [
+ ["Serviço", "O Seed Pomodoro Timer ajuda você a se concentrar com a técnica Pomodoro. Concedemos uma licença pessoal e intransferível para usar o app em dispositivos que você possui ou controla, para uso pessoal e não comercial."],
+ ["Assinaturas", "O Seed Premium é uma assinatura com renovação automática, mensal ou anual. O preço é mostrado no app antes da compra. O pagamento é cobrado na sua conta Apple na confirmação da compra. A assinatura renova automaticamente, a menos que seja cancelada pelo menos 24 horas antes do fim do período atual. Você pode gerenciá-la ou cancelá-la a qualquer momento nos ajustes da App Store. Qualquer parte não utilizada de um teste grátis é perdida ao comprar a assinatura."],
+ ["Termos da Apple", "As compras são processadas pela Apple. O contrato de licença de usuário final padrão da Apple também se aplica: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Uso aceitável", "Não faça engenharia reversa, não redistribua nem revenda o app; não o use de forma ilegal ou que prejudique outras pessoas."],
+ ["Sem garantias", "O app é fornecido no estado em que se encontra. Trabalhamos para mantê-lo confiável, mas não podemos garantir funcionamento ininterrupto ou sem erros. As sessões de foco são de sua responsabilidade; não dependa do timer onde perder um aviso possa causar danos."],
+ ["Alterações", "Podemos atualizar o app e estes termos. Se os termos mudarem, atualizaremos esta página e a data acima. Continuar usando o app significa que você aceita os novos termos."],
+ ["Contato", "Dúvidas sobre estes termos: {EMAIL}"]
+]},
+nl: {title: "Gebruiksvoorwaarden", date: "Van kracht vanaf 22 november 2026", s: [
+ ["Dienst", "Seed Pomodoro Timer helpt je focussen met de Pomodoro-techniek. We geven je een persoonlijke, niet-overdraagbare licentie om de app te gebruiken op apparaten die je bezit of beheert, voor persoonlijk en niet-commercieel gebruik."],
+ ["Abonnementen", "Seed Premium is een automatisch verlengend abonnement, maandelijks of jaarlijks. De prijs wordt vóór aankoop in de app getoond. De betaling wordt bij bevestiging van de aankoop in rekening gebracht op je Apple-account. Het abonnement verlengt automatisch tenzij je het minstens 24 uur voor het einde van de huidige periode opzegt. Je kunt het op elk moment beheren of opzeggen in de App Store-instellingen. Een ongebruikt deel van een gratis proefperiode vervalt bij aankoop van een abonnement."],
+ ["Apple-voorwaarden", "Aankopen worden verwerkt door Apple. De standaard eindgebruikerslicentie van Apple is ook van toepassing: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Acceptabel gebruik", "Reverse-engineer, herdistribueer of verkoop de app niet; gebruik hem niet op een illegale manier of op een manier die anderen schaadt."],
+ ["Geen garantie", "De app wordt geleverd zoals hij is. We werken aan betrouwbaarheid, maar kunnen geen ononderbroken of foutloos gebruik garanderen. Focussessies zijn je eigen verantwoordelijkheid; vertrouw niet op de timer als een gemiste melding schade kan veroorzaken."],
+ ["Wijzigingen", "We kunnen de app en deze voorwaarden bijwerken. Bij wijzigingen passen we deze pagina en de datum hierboven aan. Als je de app blijft gebruiken, accepteer je de nieuwe voorwaarden."],
+ ["Contact", "Vragen over deze voorwaarden: {EMAIL}"]
+]},
+ru: {title: "Условия использования", date: "Действуют с 22 ноября 2026 г.", s: [
+ ["Сервис", "Seed Pomodoro Timer помогает сосредоточиться по методу Pomodoro. Мы предоставляем вам личную непередаваемую лицензию на использование приложения на принадлежащих вам или контролируемых вами устройствах для личных, некоммерческих целей."],
+ ["Подписки", "Seed Premium — это подписка с автоматическим продлением, месячная или годовая. Цена отображается в приложении до покупки. Оплата списывается с вашего аккаунта Apple при подтверждении покупки. Подписка продлевается автоматически, если её не отменить не позднее чем за 24 часа до конца текущего периода. Вы можете управлять подпиской или отменить её в настройках App Store. Неиспользованная часть бесплатного пробного периода сгорает при оформлении подписки."],
+ ["Условия Apple", "Покупки обрабатывает Apple. Также применяется стандартное лицензионное соглашение Apple для конечного пользователя: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["Допустимое использование", "Не декомпилируйте, не распространяйте и не перепродавайте приложение; не используйте его незаконно или во вред другим."],
+ ["Без гарантий", "Приложение предоставляется как есть. Мы стараемся обеспечить его надёжность, но не гарантируем бесперебойную или безошибочную работу. Ответственность за сеансы концентрации лежит на вас; не полагайтесь на таймер там, где пропущенное уведомление может причинить вред."],
+ ["Изменения", "Мы можем обновлять приложение и эти условия. При изменениях мы обновим эту страницу и дату выше. Продолжая пользоваться приложением, вы принимаете новые условия."],
+ ["Контакты", "Вопросы по условиям: {EMAIL}"]
+]},
+ja: {title: "利用規約", date: "2026年11月22日 施行", s: [
+ ["サービス", "Seed Pomodoro Timer はポモドーロ・テクニックで集中をサポートするアプリです。お客様が所有または管理する端末で、個人的・非商業的目的で本アプリを使用するための、個人的で譲渡不能なライセンスを付与します。"],
+ ["サブスクリプション", "Seed Premium は月額または年額の自動更新サブスクリプションです。価格は購入前にアプリ内に表示されます。購入の確定時に Apple アカウントに課金されます。現在の期間終了の24時間前までに解約しない限り自動更新されます。App Store の設定からいつでも管理・解約できます。無料トライアルの未使用分は、サブスクリプション購入時に失効します。"],
+ ["Apple の規約", "購入は Apple によって処理されます。Apple の標準エンドユーザーライセンス契約も適用されます: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["許容される使用", "本アプリのリバースエンジニアリング、再配布、転売を行わないでください。違法な目的や他者に害を与える目的で使用しないでください。"],
+ ["無保証", "本アプリは現状のまま提供されます。信頼性の向上に努めていますが、中断やエラーがないことを保証するものではありません。集中セッションはお客様自身の責任です。アラートを見逃すと損害が生じうる状況ではタイマーに依存しないでください。"],
+ ["変更", "アプリおよび本規約を更新することがあります。変更時はこのページと上記の日付を更新します。アプリの継続利用は新しい規約への同意とみなされます。"],
+ ["お問い合わせ", "本規約に関するご質問: {EMAIL}"]
+]},
+ko: {title: "이용약관", date: "2026년 11월 22일 시행", s: [
+ ["서비스", "Seed Pomodoro Timer는 포모도로 기법으로 집중을 돕는 앱입니다. 귀하가 소유하거나 관리하는 기기에서 개인적·비상업적 목적으로 앱을 사용할 수 있는 개인적·양도 불가한 라이선스를 부여합니다."],
+ ["구독", "Seed Premium은 월간 또는 연간 자동 갱신 구독입니다. 가격은 구매 전에 앱에 표시됩니다. 구매 확정 시 Apple 계정으로 결제됩니다. 현재 기간 종료 24시간 전까지 취소하지 않으면 자동 갱신됩니다. App Store 설정에서 언제든지 관리하거나 취소할 수 있습니다. 무료 체험의 미사용 부분은 구독 구매 시 소멸됩니다."],
+ ["Apple 약관", "구매는 Apple이 처리합니다. Apple의 표준 최종 사용자 라이선스 계약도 적용됩니다: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["허용되는 사용", "앱을 역설계, 재배포 또는 재판매하지 마세요. 불법적인 목적이나 타인에게 해를 끼치는 방식으로 사용하지 마세요."],
+ ["보증 없음", "앱은 있는 그대로 제공됩니다. 안정성을 위해 노력하지만 중단 없거나 오류 없는 작동을 보장하지 않습니다. 집중 세션은 귀하의 책임입니다. 알림을 놓치면 피해가 발생할 수 있는 상황에서는 타이머에 의존하지 마세요."],
+ ["변경", "앱과 본 약관을 업데이트할 수 있습니다. 변경 시 이 페이지와 위 날짜를 업데이트합니다. 계속 사용하면 새 약관에 동의한 것으로 간주됩니다."],
+ ["문의", "본 약관 관련 문의: {EMAIL}"]
+]},
+"zh-Hans": {title: "使用条款", date: "2026年11月22日生效", s: [
+ ["服务", "Seed Pomodoro Timer 通过番茄工作法帮助您专注。我们授予您一项个人、不可转让的许可，可在您拥有或控制的设备上以个人、非商业目的使用本应用。"],
+ ["订阅", "Seed Premium 是按月或按年的自动续期订阅。价格在购买前显示于应用中。付款将在确认购买时从您的 Apple 账户扣除。除非在当前周期结束前至少 24 小时取消，订阅将自动续期。您可以随时在 App Store 设置中管理或取消。购买订阅后，免费试用的未使用部分将作废。"],
+ ["Apple 条款", "购买由 Apple 处理。Apple 的标准最终用户许可协议同样适用：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["可接受的使用", "请勿对本应用进行逆向工程、再分发或转售；请勿以违法或伤害他人的方式使用。"],
+ ["无担保", "本应用按现状提供。我们努力保证其可靠性，但不保证不间断或无错误运行。专注时段由您自行负责；在错过提醒可能造成损害的情况下，请勿依赖计时器。"],
+ ["变更", "我们可能会更新应用及本条款。如有变更，我们会更新此页面和上述日期。继续使用即表示您接受更新后的条款。"],
+ ["联系我们", "关于本条款的问题：{EMAIL}"]
+]},
+ar: {title: "شروط الاستخدام", date: "سارية اعتبارًا من 22 نوفمبر 2026", s: [
+ ["الخدمة", "يساعدك Seed Pomodoro Timer على التركيز باستخدام تقنية بومودورو. نمنحك ترخيصًا شخصيًا غير قابل للتحويل لاستخدام التطبيق على الأجهزة التي تملكها أو تتحكم بها، لأغراض شخصية غير تجارية."],
+ ["الاشتراكات", "Seed Premium اشتراك يتجدد تلقائيًا، شهريًا أو سنويًا. يُعرض السعر في التطبيق قبل الشراء. يُخصم المبلغ من حساب Apple الخاص بك عند تأكيد الشراء. يتجدد الاشتراك تلقائيًا ما لم يتم إلغاؤه قبل 24 ساعة على الأقل من نهاية الفترة الحالية. يمكنك إدارته أو إلغاؤه في أي وقت من إعدادات App Store. يُفقد أي جزء غير مستخدم من الفترة التجريبية المجانية عند شراء الاشتراك."],
+ ["شروط Apple", "تتم معالجة المشتريات بواسطة Apple. تنطبق أيضًا اتفاقية ترخيص المستخدم النهائي القياسية من Apple: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"],
+ ["الاستخدام المقبول", "لا تقم بفك هندسة التطبيق أو إعادة توزيعه أو بيعه؛ ولا تستخدمه بشكل غير قانوني أو يضر بالآخرين."],
+ ["دون ضمان", "يُقدَّم التطبيق كما هو. نعمل على موثوقيته، لكننا لا نضمن تشغيلًا متواصلًا أو خاليًا من الأخطاء. جلسات التركيز مسؤوليتك؛ لا تعتمد على المؤقت في الحالات التي قد يتسبب فيها تفويت التنبيه بضرر."],
+ ["التغييرات", "قد نحدّث التطبيق وهذه الشروط. إذا تغيّرت الشروط فسنحدّث هذه الصفحة والتاريخ أعلاه. استمرار الاستخدام يعني موافقتك على الشروط المحدّثة."],
+ ["التواصل", "أسئلة حول هذه الشروط: {EMAIL}"]
+]}
+};
+renderPage(P);
+</script>
+</body>
+</html>
