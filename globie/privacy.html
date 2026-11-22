@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Globie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav id="langs" aria-label="Language"></nav>
+  <h1 id="title"></h1>
+  <p class="date" id="date"></p>
+  <div id="content"></div>
+</main>
+<script src="config.js"></script>
+<script>
+const P = {
+ "en": {
+  "title": "Privacy Policy",
+  "date": "Effective November 23, 2026",
+  "s": [
+   [
+    "Summary",
+    "Globie has no ads, no accounts, no analytics and no tracking. We do not collect any personal information, and your photos never leave your iPhone."
+   ],
+   [
+    "Photos",
+    "You choose a photo with the system photo picker, so Globie never sees the rest of your library. The person or pet is cut out on your device with Apple's Vision framework. The picture and your snow globes are stored only inside the app on your iPhone. Nothing is uploaded. Saving a video or picture asks for add-only access to Photos."
+   ],
+   [
+    "Widget and reminders",
+    "The widget reads a small picture of your globe from the app's own storage on your device. The optional daily reminder is a local notification created on your iPhone."
+   ],
+   [
+    "Purchases",
+    "The optional Christmas Pass is a one-time In-App Purchase handled by Apple. We never see your payment details. No third-party purchase service is used."
+   ],
+   [
+    "Third parties",
+    "There is no third-party advertising, analytics, social media or other code in the app. Apart from the Apple purchase check, the app does not connect to the internet."
+   ],
+   [
+    "Your rights",
+    "Because we hold no personal information about you, there is nothing to access, correct or delete. Deleting the app deletes all of its data."
+   ],
+   [
+    "Changes",
+    "If this policy changes, we will update this page and the date above."
+   ],
+   [
+    "Contact",
+    "Questions about privacy: {EMAIL}"
+   ]
+  ]
+ },
+ "de": {
+  "title": "Datenschutzerklärung",
+  "date": "Gültig ab 23. November 2026",
+  "s": [
+   [
+    "Zusammenfassung",
+    "Globie hat keine Werbung, keine Konten, keine Analyse und kein Tracking. Wir erheben keine personenbezogenen Daten, und deine Fotos verlassen nie dein iPhone."
+   ],
+   [
+    "Fotos",
+    "Du wählst ein Foto über die Fotoauswahl des Systems, daher sieht Globie den Rest deiner Mediathek nie. Person oder Tier werden auf deinem Gerät mit Apples Vision-Framework freigestellt. Das Bild und deine Schneekugeln werden nur in der App auf deinem iPhone gespeichert. Nichts wird hochgeladen. Beim Sichern eines Videos oder Bildes wird nur um Schreibzugriff auf Fotos gebeten."
+   ],
+   [
+    "Widget und Erinnerungen",
+    "Das Widget liest ein kleines Bild deiner Kugel aus dem Speicher der App auf deinem Gerät. Die optionale tägliche Erinnerung ist eine lokale Mitteilung auf deinem iPhone."
+   ],
+   [
+    "Käufe",
+    "Der optionale Christmas Pass ist ein einmaliger In-App-Kauf über Apple. Wir sehen deine Zahlungsdaten nie. Es wird kein Kaufdienst von Dritten verwendet."
+   ],
+   [
+    "Dritte",
+    "Die App enthält keine Werbung, Analyse, Social-Media- oder sonstigen Code von Dritten. Außer der Kaufprüfung bei Apple verbindet sich die App nicht mit dem Internet."
+   ],
+   [
+    "Deine Rechte",
+    "Da wir keine personenbezogenen Daten über dich speichern, gibt es nichts einzusehen, zu berichtigen oder zu löschen. Wenn du die App löschst, werden alle ihre Daten gelöscht."
+   ],
+   [
+    "Änderungen",
+    "Wenn sich diese Erklärung ändert, aktualisieren wir diese Seite und das Datum oben."
+   ],
+   [
+    "Kontakt",
+    "Fragen zum Datenschutz: {EMAIL}"
+   ]
+  ]
+ },
+ "tr": {
+  "title": "Gizlilik Politikası",
+  "date": "Yürürlük tarihi: 23 Kasım 2026",
+  "s": [
+   [
+    "Özet",
+    "Globie'de reklam, hesap, analiz aracı ve takip yoktur. Hiçbir kişisel bilgi toplamayız ve fotoğrafların iPhone'undan hiç çıkmaz."
+   ],
+   [
+    "Fotoğraflar",
+    "Fotoğrafı sistemin fotoğraf seçicisiyle seçersin, bu yüzden Globie galerinin geri kalanını hiç görmez. Kişi ya da hayvan, Apple'ın Vision altyapısıyla cihazında ayrılır. Fotoğraf ve kar kürelerin yalnızca iPhone'undaki uygulamanın içinde saklanır. Hiçbir şey yüklenmez. Video ya da görsel kaydederken yalnızca Fotoğraflar'a ekleme izni istenir."
+   ],
+   [
+    "Widget ve hatırlatmalar",
+    "Widget, kürenin küçük bir görselini cihazındaki uygulama depolamasından okur. İsteğe bağlı günlük hatırlatma, iPhone'unda oluşturulan yerel bir bildirimdir."
+   ],
+   [
+    "Satın alma",
+    "İsteğe bağlı Christmas Pass, Apple tarafından yürütülen tek seferlik bir Uygulama İçi Satın Alma'dır. Ödeme bilgilerini hiç görmeyiz. Üçüncü taraf bir satın alma hizmeti kullanılmaz."
+   ],
+   [
+    "Üçüncü taraflar",
+    "Uygulamada üçüncü taraf reklam, analiz, sosyal medya veya başka kod yoktur. Apple satın alma kontrolü dışında uygulama internete bağlanmaz."
+   ],
+   [
+    "Hakların",
+    "Hakkında kişisel bilgi tutmadığımız için erişilecek, düzeltilecek veya silinecek bir şey yoktur. Uygulamayı silmek tüm verilerini siler."
+   ],
+   [
+    "Değişiklikler",
+    "Bu politika değişirse bu sayfayı ve yukarıdaki tarihi güncelleriz."
+   ],
+   [
+    "İletişim",
+    "Gizlilik soruları: {EMAIL}"
+   ]
+  ]
+ }
+};
+renderPage(P);
+</script>
+</body>
+</html>
