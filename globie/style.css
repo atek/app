@@ -33,3 +33,11 @@ nav a {
   padding: 4px 10px; border: 2px solid var(--ink); border-radius: 999px; background: #fff;
 }
 nav a[aria-current] { background: var(--blue); color: #fff; }
+nav label { display: inline-flex; align-items: center; gap: 6px; }
+nav select {
+  font: inherit; font-size: 14px; color: var(--ink); background: #fff;
+  padding: 4px 10px; border: 2px solid var(--ink); border-radius: 999px;
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+footer { margin-top: 28px; padding-top: 14px; border-top: 2px dashed var(--soft); font-size: 15px; }
+[dir="rtl"] h1 { letter-spacing: 0; }
